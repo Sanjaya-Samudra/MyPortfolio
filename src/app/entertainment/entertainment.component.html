@@ -1,0 +1,42 @@
+<div class="bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500 rounded-xl min-h-screen flex items-center justify-center p-6 ">
+
+    <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 shadow-xl rounded-3xl p-8 w-full max-w-7xl">
+      
+      <!-- Header -->
+      <header class="text-center text-3xl font-bold text-gray-800 mb-6">
+        🎮 Entertainment Showcase 🎬
+      </header>
+  
+      <!-- Category Tabs -->
+      <section class="text-center mb-6">
+        <button *ngFor="let category of categories" 
+          (click)="filterCategory(category)" 
+          class="px-4 py-2 mx-2 rounded-full transition duration-300 text-white"
+          [ngClass]="{'bg-blue-400 hover:bg-blue-500': category === 'Games',
+                      'bg-red-400 hover:bg-red-500': category === 'Videos',
+                      'bg-green-400 hover:bg-green-500': category === 'Editing',
+                      'bg-yellow-400 hover:bg-yellow-500': category === 'Software'}">
+          {{ category }}
+        </button>
+      </section>
+  
+      <!-- Showcase Grid -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let item of filteredItems" 
+          class="relative group overflow-hidden rounded-2xl shadow-md bg-gray-200 hover:bg-gray-300 transition duration-300">
+          <img [src]="item.image" class="w-full h-56 object-cover rounded-t-2xl transition duration-300 group-hover:scale-105">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-800">{{ item.title }}</h3>
+            <p class="text-gray-600">{{ item.description }}</p>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Footer -->
+      <footer class="text-center text-gray-500 mt-6">
+        Made with ❤️ by You | Entertainment Hub
+      </footer>
+  
+    </div>
+  </div>
+  

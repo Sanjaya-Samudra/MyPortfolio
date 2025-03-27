@@ -1,0 +1,37 @@
+<app-navigation></app-navigation>
+<div class="p-4 pl-4 sm:ml-64 pr-5">
+    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+        <router-outlet></router-outlet>
+        <ng-container *ngIf="router.url === '/'">
+            <div class="dashboard-container rounded-xl min-h-screen relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-700 to-indigo-800">
+                <video class="absolute top-0 left-0 w-full h-full object-cover opacity-30" autoplay loop muted>
+                    <source src="assets/videos/cyber-background.mp4" type="video/mp4">
+                </video>
+                <div class="absolute inset-x-0 top-10 flex flex-col items-center justify-center text-white text-center p-6 animate-fade-in">
+                    <h1 class="text-6xl font-extrabold drop-shadow-lg text-yellow-300 tracking-wide font-mono animate-glow">Right Person for the Right Solution</h1>
+                    <p class="text-2xl mt-4 font-semibold text-white/90 tracking-wide font-serif animate-fade-in">The Code You Need, The Engineer You Deserve.</p>
+                </div>
+                <div class="relative z-10 flex flex-wrap justify-center gap-12 mt-64">
+                    <div class="bg-white bg-opacity-20 p-8 rounded-xl shadow-2xl backdrop-blur-md w-72 text-center hover:scale-105 transition-transform duration-300 animate-glow">
+                        <h2 class="text-2xl font-bold text-white">🚀 Projects</h2>
+                        <p class="text-white text-opacity-80">Explore my latest work</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-8 rounded-xl shadow-2xl backdrop-blur-md w-72 text-center hover:scale-105 transition-transform duration-300 animate-glow">
+                        <h2 class="text-2xl font-bold text-white">💻 Skills</h2>
+                        <p class="text-white text-opacity-80">JavaScript | Angular | Node.js | Java</p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 p-8 rounded-xl shadow-2xl backdrop-blur-md w-72 text-center hover:scale-105 transition-transform duration-300 animate-glow">
+                        <h2 class="text-2xl font-bold text-white">📞 Contact</h2>
+                        <p class="text-white text-opacity-80">Let's Connect and Build!</p>
+                    </div>
+                </div>
+                <div class="absolute bottom-10 flex justify-center w-full">
+                    <div class="w-56 h-56 bg-white bg-opacity-20 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-md">
+                        <p class="text-xl font-semibold text-white text-center">Your Problem, My Solution</p>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<app-footer></app-footer>

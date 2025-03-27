@@ -1,0 +1,47 @@
+<div
+  class="bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 p-12 text-white text-center rounded-lg shadow-2xl mb-16">
+  <h1 class="text-5xl font-extrabold leading-tight mb-4">
+    My Participated Projects
+  </h1>
+  <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
+    Explore the impactful projects I've participated in. These represent my contributions, teamwork, and dedication to
+    building something greater.
+  </p>
+</div>
+
+<!-- Participated Projects Section -->
+<div class="container py-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+    <!-- Iterate over participated projects -->
+    <div *ngFor="let project of participatedProjects"
+      class="bg-white p-6 rounded-xl shadow-xl transform hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out"
+      [ngClass]="{
+             'hover:bg-gradient-to-r': true,
+             'hover:from-teal-400 hover:to-cyan-500': project.name === 'Collaborative Web App',
+             'hover:from-pink-400 hover:to-red-500': project.name === 'Mobile E-commerce App',
+             'hover:from-green-400 hover:to-blue-500': project.name === 'AI-based Data Tool'
+           }">
+
+      <!-- SVG Icon -->
+      <div class="flex justify-center items-center mb-4" [ngClass]="project.iconClass">
+        <!-- <svg [ngClass]="project.iconClass" class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path [attr.d]="project.iconPath"></path>
+          </svg> -->
+        <img [src]="project.iconPath" alt="project.name">
+      </div>
+
+      <!-- Project Title -->
+      <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ project.name }}</h3>
+
+      <!-- Project Description -->
+      <p class="text-gray-600">{{ project.description }}</p>
+
+      <!-- Year of Completion -->
+      <div class="mt-4 text-right">
+        <span [ngClass]="project.yearClass" class="text-lg font-semibold">{{ project.year }}</span>
+      </div>
+    </div>
+
+  </div>
+</div>

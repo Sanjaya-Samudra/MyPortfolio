@@ -1,0 +1,36 @@
+<div
+    class="bg-gradient-to-r from-blue-500 via-green-400 to-teal-500 p-12 text-white text-center rounded-lg shadow-xl mb-16">
+    <h1 class="text-5xl font-extrabold leading-tight mb-4">
+        My Achievements
+    </h1>
+    <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
+        Here are some of the milestones and achievements I’m most proud of. These represent my growth and
+        accomplishments in various fields.
+    </p>
+</div>
+
+<!-- Achievement Cards Section -->
+<div class="container py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+        <!-- Achievement 1 -->
+        <div *ngFor="let achievement of achievements"
+            class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out">
+            <div class="flex justify-center items-center mb-4">
+                <!-- <svg class="w-12 h-12 text-{{achievement.color}}" fill="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z">
+                    </path>
+                </svg> -->
+                <img [src]="achievement.icon" alt="achievement.title">
+            </div>
+            <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ achievement.title }}</h3>
+            <p class="text-gray-600">{{ achievement.description }}
+            </p>
+            <div class="mt-4 text-right">
+                <span class="text-teal-500 font-semibold">{{ achievement.year }}</span>
+            </div>
+        </div>
+    </div>
+</div>

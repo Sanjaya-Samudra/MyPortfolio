@@ -1,0 +1,43 @@
+<div class="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 p-12 text-white text-center rounded-lg shadow-2xl">
+    <h1 class="text-5xl font-extrabold leading-tight mb-4">
+        Showcasing My Awesome Projects
+    </h1>
+    <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
+        Explore my creative works, from coding projects to design masterpieces. Click on the cards below to learn more
+        about each one.
+    </p>
+    <a href="javascript:void(0)" (click)="showProjects = !showProjects"
+        class="inline-block bg-transparent border-2 border-white text-white px-6 py-3 rounded-full text-lg font-medium transition-transform transform hover:scale-105 hover:bg-white hover:text-black hover:border-transparent">
+        {{ showProjects ? 'Hide Projects' : 'View Projects' }}
+    </a>
+</div>
+
+<!-- Project Cards Section -->
+<div *ngIf="showProjects" class="container py-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div *ngFor="let project of projects"
+            class="bg-white rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out">
+            <img [src]="project.image" alt="{{project.name}}" class="w-full h-40 object-cover rounded-t-lg">
+            <div class="p-4">
+                <h3 class="text-2xl font-semibold text-gray-800">{{ project.name }}</h3>
+                <p class="text-gray-600 mt-2">{{ project.description }}</p>
+                
+                <!-- Completion Progress Bar -->
+                <div class="mt-6">
+                    <span class="text-sm text-teal-500">Project Completion: {{ project.completion }}%</span>
+                    <div class="w-full bg-gray-200 rounded-full mt-2">
+                        <div class="bg-teal-500 h-2 rounded-full" [style.width.%]="project.completion"></div>
+                    </div>
+                </div>
+
+                <div class="mt-4 flex justify-between items-center">
+                    <a [href]="project.link" target="_blank"
+                        class="btn btn-primary text-white px-4 py-2 rounded-md transition duration-300 ease-in-out hover:bg-blue-600 hover:scale-105">
+                        View Project
+                    </a>
+                    <div class="text-xs text-gray-500">{{ project.year }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

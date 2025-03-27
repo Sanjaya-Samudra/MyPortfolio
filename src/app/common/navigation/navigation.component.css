@@ -1,0 +1,36 @@
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee {
+  display: flex;
+  animation: marquee-scroll 15s linear infinite;
+  min-width: 100%;
+  width: fit-content;
+}
+
+/* Custom CSS for Sidebar Animation */
+@keyframes slideIn {
+    from {
+       transform: translateX(-100%);
+    }
+    to {
+       transform: translateX(0);
+    }
+ }
+ 
+ #logo-sidebar {
+    animation: slideIn 0.5s ease-out;
+ }
+ 
+ /* Customize the text size of the sidebar items */
+ #logo-sidebar a span {
+    font-size: 1.1rem;
+    font-weight: 500;
+ }
+ 
