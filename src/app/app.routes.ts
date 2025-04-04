@@ -6,6 +6,7 @@ import { AcheivementsComponent } from './acheivements/acheivements.component';
 import { ParticipationsComponent } from './participations/participations.component';
 import { AboutComponent } from './about/about.component';
 import { EntertainmentComponent } from './entertainment/entertainment.component';
+import { LearningsComponent } from './learnings/learnings.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
             {
                 path:'entertainment',
                 component:EntertainmentComponent
+            },
+            {
+                path:'learnings',
+                component:LearningsComponent
             }
         ]
     },

@@ -1,0 +1,30 @@
+/* learnings.component.css */
+
+/* Add a colorful gradient background to the entire component */
+.container {
+  background: linear-gradient(45deg, #f0f4f8, #d4e1e9);
+  border-radius: 10px;
+}
+
+/* Style for the "Read More" button */
+button {
+  background-color: #6b78e6;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #4f64b5;
+}
+
+/* Add shadow to the resource cards */
+.w-64 {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.w-64:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
