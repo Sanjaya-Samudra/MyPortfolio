@@ -23,13 +23,6 @@ export class AcheivementsComponent {
       icon: 'codefuse.PNG',
       year: 2024,
       color: 'pink-500'
-    },
-    {
-      title: 'Python Certification Completion',
-      description: 'Earned a certification in Python, demonstrating solid understanding and hands-on experience with the language.',
-      icon: 'python-uom.PNG',
-      year: 2023,
-      color: 'yellow-500'
     }
   ];
 }

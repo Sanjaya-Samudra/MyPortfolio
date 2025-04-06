@@ -11,28 +11,28 @@ import { Component } from '@angular/core';
 export class LearningsComponent {
   learnings = [
     {
-      title: 'JavaScript Mastery',
-      description: 'A deep dive into JavaScript and its modern frameworks like React, Vue, and Angular.',
-      imageUrl: 'https://via.placeholder.com/400?text=JavaScript+Mastery',
+      title: 'Python Certification Completion',
+      description: 'Earned a certification in Python, demonstrating solid understanding and hands-on experience with the language.',
+      imageUrl: 'python-uom.PNG',
     },
     {
-      title: 'CSS Grid & Flexbox',
-      description: 'Master modern layout techniques in CSS with Grid and Flexbox to create responsive designs.',
-      imageUrl: 'https://via.placeholder.com/400?text=CSS+Grid+%26+Flexbox',
+      title: 'Basics of WordPress',
+      description: 'The WordPress Basics course teaches you how to create, manage, and customize websites with themes, plugins, and content.',
+      imageUrl: 'wordpress1.png',
     },
     {
-      title: 'Web Accessibility (a11y)',
-      description: 'Learn how to make your websites accessible to everyone, including people with disabilities.',
-      imageUrl: 'https://via.placeholder.com/400?text=Web+Accessibility',
+      title: 'Build a Complete Website Using WordPress',
+      description: 'Create a fully functional website, from setup to launch, including customization, design, and adding essential features.',
+      imageUrl: 'wordpress2.png',
     }
   ];
 
   // Array of external learning resources
   resources = [
     {
-      title: 'MDN Web Docs',
-      description: 'Comprehensive resource for web developers to understand HTML, CSS, JavaScript, and more.',
-      link: 'https://developer.mozilla.org/en-US/',
+      title: 'Coursera',
+      description: 'Coursera is an online platform offering courses and certifications from top universities and companies, allowing flexible learning across various subjects.',
+      link: 'https://www.coursera.org/',
     },
     {
       title: 'freeCodeCamp',
@@ -40,9 +40,9 @@ export class LearningsComponent {
       link: 'https://www.freecodecamp.org/',
     },
     {
-      title: 'CSS Tricks',
-      description: 'CSS Tricks provides tips, tricks, and techniques for mastering CSS and front-end development.',
-      link: 'https://css-tricks.com/',
+      title: 'Udemy',
+      description: 'Udemy is an online learning platform offering a wide range of courses across various topics, allowing learners to study at their own pace and earn certificates of completion.',
+      link: 'https://www.udemy.com/',
     }
   ];
 }
