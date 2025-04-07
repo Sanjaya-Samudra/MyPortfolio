@@ -14,6 +14,8 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "docs",
+            "baseHref": "/https://github.com/Sanjaya-Samudra/MyPortfolio/",
+            "deployUrl": "/https://github.com/Sanjaya-Samudra/MyPortfolio/",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -33,6 +35,7 @@
           },
           "configurations": {
             "production": {
+              "outputPath": "docs",
               "budgets": [
                 {
                   "type": "initial",
