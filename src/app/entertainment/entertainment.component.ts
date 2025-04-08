@@ -14,7 +14,7 @@ export class EntertainmentComponent {
     { title: 'Game Development', description: 'Built a simple black jack game.', category: 'Games', image: 'game.png' },
     { title: 'Video Editing', description: 'Created cinematic edits with Wondershare.', category: 'Videos', image: 'video-editing.png' },
     { title: '3D Modeling', description: 'Modeled in Blender.', category: 'Editing', image: '3D-Dornut.png' },
-    { title: 'Software Dev', description: 'Built a streaming app.', category: 'Software', image: 'software.png' },
+    { title: 'Software Dev', description: 'Built a software app.', category: 'Software', image: 'software.png' },
     { title: 'Music Production', description: 'Produced an EDM track.', category: 'Editing', image: 'music.png' },
     { title: 'Photography', description: 'Image edited with photoshop.', category: 'Editing', image: 'image-editing.png' }
   ];
