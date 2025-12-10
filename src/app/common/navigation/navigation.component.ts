@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class NavigationComponent {
   isDropdownOpen = false;
+  isSidebarOpen = false;
 
   // User Information
   userName = 'Sanjaya Samudra';
@@ -23,6 +24,14 @@ export class NavigationComponent {
 
   closeDropdown() {
     this.isDropdownOpen = false; // Close dropdown after clicking a link
+  }
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  closeSidebar() {
+    this.isSidebarOpen = false;
   }
 
   logout() {
