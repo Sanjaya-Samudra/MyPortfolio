@@ -1,35 +1,147 @@
 <app-navigation></app-navigation>
-<div class="p-4 pl-4 sm:ml-64 pr-5">
-    <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
+<div class="p-4 sm:ml-64">
+    <div class="p-6 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-20">
         <router-outlet></router-outlet>
         <ng-container *ngIf="router.url === '/'">
-            <div class="dashboard-container rounded-xl min-h-screen relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-700 to-indigo-800">
-                <video class="absolute top-0 left-0 w-full h-full object-cover opacity-30" autoplay loop muted>
-                    <source src="assets/videos/cyber-background.mp4" type="video/mp4">
-                </video>
-                <div class="absolute inset-x-0 top-10 flex flex-col items-center justify-center text-white text-center p-6 animate-fade-in">
-                    <h1 class="text-6xl font-extrabold drop-shadow-lg text-yellow-300 tracking-wide font-mono animate-glow">Right Person for the Right Solution</h1>
-                    <p class="text-2xl mt-4 font-semibold text-white/90 tracking-wide font-serif animate-fade-in">The Code You Need, The Engineer You Deserve.</p>
+            <div class="dashboard-container rounded-xl min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+                <!-- Enhanced Animated Background Particles -->
+                <div class="absolute inset-0">
+                    <div class="particle particle-1"></div>
+                    <div class="particle particle-2"></div>
+                    <div class="particle particle-3"></div>
+                    <div class="particle particle-4"></div>
+                    <div class="particle particle-5"></div>
+                    <div class="particle particle-6"></div>
+                    <div class="particle particle-7"></div>
+                    <div class="particle particle-8"></div>
+                    <div class="particle particle-9"></div>
+                    <div class="particle particle-10"></div>
+                    <!-- Additional Particles -->
+                    <div class="particle particle-11"></div>
+                    <div class="particle particle-12"></div>
+                    <div class="particle particle-13"></div>
+                    <div class="particle particle-14"></div>
+                    <div class="particle particle-15"></div>
+                    <div class="particle particle-16"></div>
+                    <div class="particle particle-17"></div>
+                    <div class="particle particle-18"></div>
+                    <div class="particle particle-19"></div>
+                    <div class="particle particle-20"></div>
                 </div>
-                <div class="relative z-10 flex flex-wrap justify-center gap-12 mt-64">
-                    <div class="bg-white bg-opacity-20 p-8 rounded-xl shadow-2xl backdrop-blur-md w-72 text-center hover:scale-105 transition-transform duration-300 animate-glow">
-                        <h2 class="text-2xl font-bold text-white">🚀 Projects</h2>
-                        <p class="text-white text-opacity-80">Explore my latest work</p>
+
+                <!-- Morphing Gradient Background -->
+                <div class="absolute inset-0 bg-gradient-to-br from-cyan-200/30 via-blue-200/30 to-purple-200/30 animate-gradient-shift"></div>
+
+                <!-- Enhanced Floating Geometric Shapes -->
+                <div class="absolute inset-0">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                    <div class="shape shape-4"></div>
+                    <div class="shape shape-5"></div>
+                    <!-- Additional Shapes -->
+                    <div class="shape shape-6"></div>
+                    <div class="shape shape-7"></div>
+                    <div class="shape shape-8"></div>
+                    <div class="shape shape-9"></div>
+                    <div class="shape shape-10"></div>
+                    <div class="shape shape-11"></div>
+                    <div class="shape shape-12"></div>
+                </div>
+
+                <!-- Additional Animated Background Elements -->
+                <div class="absolute inset-0">
+                    <div class="bg-element bg-element-1"></div>
+                    <div class="bg-element bg-element-2"></div>
+                    <div class="bg-element bg-element-3"></div>
+                    <div class="bg-element bg-element-4"></div>
+                    <div class="bg-element bg-element-5"></div>
+                    <div class="bg-element bg-element-6"></div>
+                    <div class="bg-element bg-element-7"></div>
+                    <div class="bg-element bg-element-8"></div>
+                    <div class="bg-element bg-element-9"></div>
+                    <div class="bg-element bg-element-10"></div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
+                    <!-- Compact Animated Title Section -->
+                    <div class="text-center mb-8 animate-slide-up">
+                        <div class="relative">
+                            <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600 animate-text-shimmer tracking-wider font-mono mb-4 animate-pulse-glow">
+                                RIGHT PERSON
+                            </h1>
+                            <div class="absolute -top-2 -left-2 w-6 h-6 bg-cyan-400 rounded-full animate-ping opacity-75"></div>
+                            <div class="absolute -bottom-2 -right-2 w-4 h-4 bg-purple-400 rounded-full animate-bounce"></div>
+                        </div>
+
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 animate-slide-up-delayed tracking-wide font-serif mb-3">
+                            for the <span class="text-indigo-600 animate-color-cycle">RIGHT SOLUTION</span>
+                        </h2>
+
+                        <p class="text-lg md:text-xl text-gray-700 animate-fade-in-slow font-light tracking-wide max-w-xl mx-auto leading-relaxed">
+                            The <span class="text-purple-600 font-semibold animate-pulse">Code</span> You Need,
+                            The <span class="text-blue-600 font-semibold animate-pulse">Engineer</span> You Deserve
+                        </p>
                     </div>
-                    <div class="bg-white bg-opacity-20 p-8 rounded-xl shadow-2xl backdrop-blur-md w-72 text-center hover:scale-105 transition-transform duration-300 animate-glow">
-                        <h2 class="text-2xl font-bold text-white">💻 Skills</h2>
-                        <p class="text-white text-opacity-80">JavaScript | Angular | Node.js | Java</p>
+
+                    <!-- Compact Interactive Contact Card -->
+                    <div class="relative group animate-slide-up-delayed-2 card-3d" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave($event)">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200 animate-tilt animate-card-glow-shift"></div>
+                        <div class="relative bg-white/80 backdrop-blur-xl border border-gray-200/50 rounded-2xl p-6 md:p-8 shadow-2xl hover:shadow-cyan-500/25 transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer group">
+                            <!-- Animated Border -->
+                            <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/50 via-transparent to-purple-400/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-border-flow"></div>
+
+                            <!-- Content -->
+                            <div class="relative z-10 text-center">
+                                <div class="mb-4">
+                                    <div class="inline-block p-3 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full mb-3 animate-spin-slow group-hover:animate-none shadow-lg">
+                                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-2 animate-text-glow">Let's Connect</h3>
+                                    <p class="text-gray-600 text-base animate-fade-in">Ready to build something amazing together</p>
+                                </div>
+
+                                <!-- Compact Animated CTA Button -->
+                                <button class="relative inline-flex items-center px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full hover:from-cyan-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-110 hover:shadow-2xl animate-pulse-slow group shadow-lg text-sm">
+                                    <span class="relative z-10">Get In Touch</span>
+                                    <div class="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-ripple"></div>
+                                    <svg class="w-4 h-4 ml-2 animate-bounce-x" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Floating Elements -->
+                            <div class="absolute -top-3 -right-3 w-6 h-6 bg-cyan-400 rounded-full animate-float opacity-60"></div>
+                            <div class="absolute -bottom-3 -left-3 w-4 h-4 bg-purple-400 rounded-full animate-float-delayed opacity-60"></div>
+                            <div class="absolute top-1/2 -left-4 w-3 h-3 bg-blue-400 rounded-full animate-float-slow opacity-40"></div>
+                        </div>
                     </div>
-                    <div class="bg-white bg-opacity-20 p-8 rounded-xl shadow-2xl backdrop-blur-md w-72 text-center hover:scale-105 transition-transform duration-300 animate-glow">
-                        <h2 class="text-2xl font-bold text-white">📞 Contact</h2>
-                        <p class="text-white text-opacity-80">Let's Connect and Build!</p>
+
+                    <!-- Compact Bottom Tagline -->
+                    <div class="mt-8 text-center animate-fade-in-slow">
+                        <div class="inline-block px-4 py-2 bg-white/60 backdrop-blur-sm border border-gray-200/50 rounded-full shadow-lg">
+                            <p class="text-gray-700 text-sm font-medium animate-pulse">
+                                Your <span class="text-purple-600 font-bold">Problem</span> • My <span class="text-blue-600 font-bold">Solution</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="absolute bottom-10 flex justify-center w-full">
-                    <div class="w-56 h-56 bg-white bg-opacity-20 rounded-full flex items-center justify-center shadow-2xl backdrop-blur-md">
-                        <p class="text-xl font-semibold text-white text-center">Your Problem, My Solution</p>
-                    </div>
-                </div>
+
+                <!-- Enhanced Additional Animated Elements -->
+                <div class="absolute top-20 left-20 w-24 h-24 border border-cyan-300/40 rounded-full animate-orbit"></div>
+                <div class="absolute bottom-20 right-20 w-20 h-20 border border-purple-300/40 rounded-full animate-orbit-reverse"></div>
+                <div class="absolute top-1/2 left-10 w-12 h-12 bg-gradient-to-br from-cyan-200/40 to-blue-200/40 rounded-full animate-float-complex"></div>
+                <div class="absolute top-1/3 right-10 w-16 h-16 bg-gradient-to-br from-purple-200/40 to-pink-200/40 rounded-full animate-float-complex-delayed"></div>
+                <!-- More orbiting elements -->
+                <div class="absolute top-10 right-1/4 w-16 h-16 border border-blue-300/30 rounded-full animate-orbit-slow"></div>
+                <div class="absolute bottom-10 left-1/4 w-14 h-14 border border-indigo-300/30 rounded-full animate-orbit-reverse-slow"></div>
+                <div class="absolute top-1/4 left-1/3 w-18 h-18 border border-cyan-300/25 rounded-full animate-orbit-fast"></div>
+                <div class="absolute bottom-1/4 right-1/3 w-22 h-22 border border-purple-300/25 rounded-full animate-orbit-reverse-fast"></div>
+                <div class="absolute top-3/4 left-1/5 w-20 h-20 border border-blue-300/35 rounded-full animate-orbit-medium"></div>
             </div>
         </ng-container>
     </div>
