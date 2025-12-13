@@ -1,33 +1,160 @@
-<section
-    class="bg-white dark:bg-gray-900 bg-center rounded-xl bg-no-repeat bg-[url('https://cdn.pixabay.com/photo/2023/05/24/17/48/ai-generated-8015423_1280.jpg')] bg-gray-700 bg-blend-multiply">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
-        <div class="flex flex-col justify-center">
-            <h1
-                class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-                We invest in the world’s potential</h1>
-            <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Welcome to the techno
-                world—buckle up, we're about to hack reality
-            </p>
-            <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0">
-                <a href=""
-                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-                    Get started
-                    <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="none" viewBox="0 0 14 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 5h12m0 0L9 1m4 4L9 9" />
-                    </svg>
+<section class="relative w-full min-h-[95vh] flex items-center justify-center overflow-hidden p-4 sm:p-6 lg:p-8 rounded-3xl">
+
+    <div class="absolute inset-0 z-0">
+        <video #video
+            class="w-full h-full object-cover scale-105 contrast-110 brightness-90" 
+            autoplay muted loop playsinline
+            poster="https://cdn.pixabay.com/video/2019/02/04/21161-315224572.jpg">
+            <source src="https://cdn.pixabay.com/video/2019/02/04/21161-315224572_large.mp4" type="video/mp4">
+        </video>
+        
+        <div class="absolute inset-0 bg-white/20 mix-blend-overlay"></div>
+        <div class="absolute inset-0 bg-noise mix-blend-soft-light opacity-30"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-white/10"></div>
+    </div>
+
+    <div class="relative z-10 w-full max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <div class="lg:col-span-8 bg-white/60 backdrop-blur-2xl border border-white/60 rounded-[2rem] p-8 lg:p-12 shadow-[inset_0_0_20px_rgba(255,255,255,0.5),0_20px_40px_-20px_rgba(0,0,0,0.1)] hover:shadow-[inset_0_0_30px_rgba(255,255,255,0.7),0_30px_60px_-20px_rgba(0,0,0,0.15)] transition-all duration-500 flex flex-col justify-between group animate-fade-in-up relative overflow-hidden">
+            
+            <div class="absolute inset-0 z-0 opacity-50 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none">
+                <video #video class="w-full h-full object-cover" style="object-position: 0% 100%;" autoplay muted loop playsinline poster="https://cdn.pixabay.com/video/2022/11/26/140521-775376205.jpg">
+                    <source src="https://cdn.pixabay.com/video/2022/11/26/140521-775376205_large.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start mb-12 gap-4">
+                <div class="flex items-center gap-4">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-blue-400 rounded-full blur-md opacity-30 animate-pulse-slow"></div>
+                        <div class="relative w-16 h-16 rounded-full overflow-hidden border-[3px] border-white shadow-md">
+                            <div class="w-full h-full bg-blue-500 flex items-center justify-center text-white font-bold text-2xl">SS</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 leading-tight">Sanjaya Samudra</h3>
+                        <p class="text-sm text-blue-600/80 font-medium bg-blue-50/50 px-2 py-0.5 rounded-md inline-block mt-1">Full Stack Engineer</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 bg-emerald-50/80 border border-emerald-200/60 backdrop-blur-md px-4 py-2 rounded-full shadow-sm">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Available for work</span>
+                </div>
+            </div>
+
+            <div class="mb-8 relative z-10">
+                <div class="w-fit">
+                    <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold text-gray-900 tracking-tight mb-2 overflow-visible pb-2 leading-tight">
+                        Building the
+                    </h1>
+                </div>
+                <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                    <span class="video-text-mask animate-gradient-x">Digital Reality.</span>
+                </h1>
+                <p class="text-xl text-gray-600/90 max-w-xl leading-relaxed font-medium group-hover:text-gray-900 transition-colors duration-300">
+                    {{ currentText }}<span class="animate-pulse">|</span>
+                </p>
+            </div>
+
+            <div class="flex flex-wrap gap-4 relative z-10">
+                <a href="mailto:sanjaya.samudra@gmail.com" class="group relative overflow-hidden bg-gray-900 text-white px-8 py-4 rounded-2xl font-bold tracking-wide transition-all hover:scale-105 hover:shadow-xl active:scale-95 flex items-center gap-3 no-underline">
+                    <span class="relative z-10">Start a Project</span>
+                    <svg class="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <div class="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
                 </a>
-                <a href=""
-                    class="py-3 px-5 sm:ms-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                    Learn more
-                </a>
+                <button class="group bg-white/40 border-2 border-white/70 backdrop-blur-md text-gray-800 px-8 py-4 rounded-2xl font-bold tracking-wide hover:bg-white hover:border-blue-200 hover:text-blue-600 transition-all hover:shadow-lg active:scale-95">
+                    Download CV
+                </button>
             </div>
         </div>
-        <div class="rounded-xl shadow-xl overflow-hidden inline-block">
-            <video class="rounded-xl" controls>
-                <source src="myportfolio-bg-video.mp4" type="video/mp4">
-            </video>
+
+        <div class="lg:col-span-4 flex flex-col gap-6 animate-fade-in-up delay-200">
+            
+            <div class="flex-1 bg-white/40 backdrop-blur-xl border border-white/60 rounded-[2rem] p-8 shadow-[inset_0_0_20px_rgba(255,255,255,0.5),0_20px_40px_-20px_rgba(0,0,0,0.1)] group hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 flex flex-col justify-center items-center text-center relative overflow-hidden">
+                <div class="absolute inset-0 z-0 opacity-30 mix-blend-overlay group-hover:opacity-50 transition-opacity duration-700 pointer-events-none">
+                    <video #video class="w-full h-full object-cover" autoplay muted loop playsinline poster="https://cdn.pixabay.com/video/2023/01/09/145864-787701151.jpg">
+                        <source src="https://cdn.pixabay.com/video/2023/01/09/145864-787701151_large.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+                <div class="absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent shimmer opacity-0 group-hover:opacity-100 z-10"></div>
+                
+                <div class="relative z-20">
+                    <h2 class="text-7xl font-black text-transparent bg-clip-text bg-gradient-to-br from-gray-900 to-gray-700 mb-0 leading-none">3+</h2>
+                    <p class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-6">Years Experience</p>
+                    <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-6"></div>
+                    <div class="flex justify-around w-full relative z-10">
+                        <div>
+                            <span class="block text-3xl font-black text-gray-800">12</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Projects</span>
+                        </div>
+                        <div>
+                            <span class="block text-3xl font-black text-gray-800">100%</span>
+                            <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Success</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="min-h-[200px] bg-white/50 backdrop-blur-xl border border-white/50 rounded-[2rem] p-8 shadow-[inset_0_0_20px_rgba(255,255,255,0.3)] flex flex-col justify-between group overflow-hidden relative transition-all hover:bg-white/60 hover:shadow-xl">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div class="relative z-10 flex justify-between items-start">
+                    <div>
+                         <span class="text-xs font-bold text-blue-600 uppercase tracking-widest">Current Focus</span>
+                         <h4 class="text-2xl font-extrabold text-gray-900 mt-1">Machine Learning</h4>
+                    </div>
+                    <div class="bg-white/50 p-2 rounded-full animate-float">
+                        <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                </div>
+                <div class="relative z-10 mt-6">
+                    <div class="flex justify-between text-xs font-bold text-gray-500 mb-2">
+                        <span>Progress</span>
+                        <span>10%</span>
+                    </div>
+                    <div class="w-full bg-gray-200/50 rounded-full h-2 overflow-hidden">
+                        <div class="bg-green-500 h-2 rounded-full animate-width-to-10"></div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="lg:col-span-12 bg-white/70 backdrop-blur-2xl border border-white/60 rounded-[2rem] px-8 py-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8 animate-fade-in-up delay-300 hover:shadow-md transition-shadow relative z-20">
+            <span class="text-sm font-extrabold text-gray-400 uppercase tracking-[0.2em] hidden md:block">Core Technologies</span>
+            
+            <div class="flex flex-wrap justify-center gap-10 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                <div class="flex flex-col items-center gap-2 animate-float delay-100 group">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-8 h-8 group-hover:drop-shadow-[0_0_10px_rgba(248,152,32,0.5)] transition-all" alt="Java">
+                    <span class="font-bold text-xs text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-4">Java</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 animate-float delay-200 group">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" class="w-8 h-8 group-hover:drop-shadow-[0_0_10px_rgba(221,0,49,0.5)] transition-all" alt="Angular">
+                    <span class="font-bold text-xs text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-4">Angular</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 animate-float delay-300 group">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" class="w-8 h-8 group-hover:drop-shadow-[0_0_10px_rgba(0,117,143,0.5)] transition-all" alt="MySQL">
+                    <span class="font-bold text-xs text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-4">MySQL</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 animate-float delay-400 group">
+                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-8 h-8 group-hover:drop-shadow-[0_0_10px_rgba(55,118,171,0.5)] transition-all" alt="Python">
+                     <span class="font-bold text-xs text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-4">Python</span>
+                </div>
+                 <div class="flex flex-col items-center gap-2 animate-float delay-500 group">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" class="w-8 h-8 group-hover:drop-shadow-[0_0_10px_rgba(51,153,51,0.5)] transition-all" alt="Node.js">
+                    <span class="font-bold text-xs text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-4">Node.js</span>
+                </div>
+            </div>
+
+            <button (click)="navigateToProjects()" class="px-6 py-3 rounded-xl bg-blue-50 text-sm font-bold text-blue-600 hover:bg-blue-100 hover:text-blue-700 flex items-center gap-1 group transition-all cursor-pointer">
+                View All Works 
+                <span class="transform group-hover:translate-x-1 transition-transform">→</span>
+            </button>
+        </div>
+
     </div>
 </section>
