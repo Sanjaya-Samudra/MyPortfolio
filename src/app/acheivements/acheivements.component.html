@@ -1,36 +1,71 @@
-<div
-    class="bg-gradient-to-r from-blue-500 via-green-400 to-teal-500 p-12 text-white text-center rounded-lg shadow-xl mb-16">
-    <h1 class="text-5xl font-extrabold leading-tight mb-4">
-        My Achievements
-    </h1>
-    <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
-        Here are some of the milestones and achievements I’m most proud of. These represent my growth and
-        accomplishments in various fields.
-    </p>
+<div class="achievements-container">
+  <!-- Animated Background Elements -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+
+  <!-- Header Section -->
+  <div class="header-section">
+    <h1 class="main-title">My Achievements</h1>
+    <p class="subtitle">Milestones that define my journey</p>
+    <div class="title-decoration"></div>
+  </div>
+
+  <!-- Horizontal Timeline Section -->
+  <div class="horizontal-timeline">
+    <div class="timeline-line-horizontal"></div>
+    <div class="timeline-item-horizontal" *ngFor="let achievement of achievements.slice(0, 1); let i = index">
+      <div class="achievement-card-horizontal" [style.animation-delay]="i * 0.3 + 's'" (click)="openModal(achievement)" style="cursor: pointer;">
+        <div class="card-glow"></div>
+        <div class="card-content">
+          <div class="icon-container">
+            <img [src]="achievement.icon" [alt]="achievement.title" class="achievement-icon">
+            <div class="icon-glow"></div>
+          </div>
+          <div class="text-content">
+            <h3 class="achievement-title">{{ achievement.title }}</h3>
+            <p class="achievement-description">{{ achievement.description }}</p>
+            <div class="year-badge">
+              <span class="year">{{ achievement.year }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-ribbon" [style.background]="getRibbonColor(achievement.color)"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vertical Grid Section -->
+  <div class="vertical-grid">
+    <div class="achievement-card-vertical" *ngFor="let achievement of achievements.slice(1); let i = index" [style.animation-delay]="(i + 1) * 0.3 + 's'" (click)="openModal(achievement)" style="cursor: pointer;">
+      <div class="card-glow"></div>
+      <div class="card-content-vertical">
+        <div class="icon-container-vertical">
+          <img [src]="achievement.icon" [alt]="achievement.title" class="achievement-icon-vertical">
+          <div class="icon-glow"></div>
+        </div>
+        <div class="text-content-vertical">
+          <h3 class="achievement-title-vertical">{{ achievement.title }}</h3>
+          <p class="achievement-description-vertical">{{ achievement.description }}</p>
+          <div class="year-badge-vertical">
+            <span class="year">{{ achievement.year }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-ribbon-vertical" [style.background]="getRibbonColor(achievement.color)"></div>
+    </div>
+  </div>
 </div>
 
-<!-- Achievement Cards Section -->
-<div class="container py-8">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
-        <!-- Achievement 1 -->
-        <div *ngFor="let achievement of achievements"
-            class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out">
-            <div class="flex justify-center items-center mb-4">
-                <!-- <svg class="w-12 h-12 text-{{achievement.color}}" fill="currentColor" viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z">
-                    </path>
-                </svg> -->
-                <img [src]="achievement.icon" alt="achievement.title">
-            </div>
-            <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ achievement.title }}</h3>
-            <p class="text-gray-600">{{ achievement.description }}
-            </p>
-            <div class="mt-4 text-right">
-                <span class="text-teal-500 font-semibold">{{ achievement.year }}</span>
-            </div>
-        </div>
-    </div>
+<!-- Modal for Full Image View -->
+<div *ngIf="showModal" class="modal-overlay" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <button class="close-button" (click)="closeModal()">&times;</button>
+    <img [src]="selectedAchievement.icon" [alt]="selectedAchievement.title" class="modal-image">
+    <h3 class="modal-title">{{ selectedAchievement.title }}</h3>
+    <button class="close-button-bottom" (click)="closeModal()">Close</button>
+  </div>
 </div>

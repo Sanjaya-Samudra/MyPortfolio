@@ -25,4 +25,25 @@ export class AcheivementsComponent {
       color: 'pink-500'
     }
   ];
+
+  selectedAchievement: any = null;
+  showModal = false;
+
+  getRibbonColor(color: string): string {
+    const colorMap: { [key: string]: string } = {
+      'teal-500': 'linear-gradient(45deg, #14b8a6, #0f766e)',
+      'pink-500': 'linear-gradient(45deg, #ec4899, #be185d)'
+    };
+    return colorMap[color] || 'linear-gradient(45deg, #6b7280, #4b5563)';
+  }
+
+  openModal(achievement: any) {
+    this.selectedAchievement = achievement;
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.selectedAchievement = null;
+  }
 }

@@ -1,0 +1,799 @@
+.achievements-container {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  overflow: hidden;
+  padding: 2rem;
+  border-radius: 1.5rem;
+}
+
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 80px;
+  height: 80px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 60px;
+  height: 60px;
+  top: 20%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 100px;
+  height: 100px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+.shape-4 {
+  width: 70px;
+  height: 70px;
+  bottom: 10%;
+  right: 10%;
+  animation-delay: 1s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.main-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  animation: fadeInUp 1s ease-out;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.title-decoration {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  margin: 0 auto;
+  border-radius: 2px;
+  animation: growWidth 1s ease-out 0.4s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes growWidth {
+  from { width: 0; }
+  to { width: 100px; }
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #3b82f6, #8b5cf6, #ec4899);
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: drawLine 2s ease-out forwards;
+}
+
+@keyframes drawLine {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+.timeline-item {
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.timeline-item.left {
+  text-align: right;
+  padding-right: 60px;
+}
+
+.timeline-item.right {
+  text-align: left;
+  padding-left: 60px;
+  margin-left: 50%;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 4px solid #3b82f6;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: bounceIn 0.6s ease-out forwards;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.achievement-card {
+  background: #fff;
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(50px);
+  opacity: 0;
+  animation: slideIn 0.8s ease-out forwards;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.timeline-item.left .achievement-card {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.timeline-item.right .achievement-card {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.achievement-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1), rgba(236,72,153,0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 20px;
+}
+
+.achievement-card:hover .card-glow {
+  opacity: 1;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.icon-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.achievement-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.achievement-card:hover .achievement-icon {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.6), 0 0 30px rgba(34, 197, 94, 0.4), 0 0 45px rgba(34, 197, 94, 0.2);
+}
+
+.achievement-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.6), 0 0 30px rgba(34, 197, 94, 0.4), 0 0 45px rgba(34, 197, 94, 0.2);
+}
+
+.achievement-icon::before {
+  content: "Click the card to see full image";
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.achievement-icon::after {
+  content: "";
+  position: absolute;
+  bottom: 95%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.achievement-icon:hover::before,
+.achievement-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.icon-glow {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,197,94,0.4) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.achievement-card:hover .icon-glow {
+  opacity: 1;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.achievement-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.achievement-card:hover .achievement-title {
+  color: #1e293b;
+}
+
+.achievement-description {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.year-badge {
+  display: inline-block;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 8px rgba(59,130,246,0.3);
+  transition: transform 0.3s ease;
+}
+
+.achievement-card:hover .year-badge {
+  transform: scale(1.05);
+}
+
+.card-ribbon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.achievement-card:hover .card-ribbon {
+  opacity: 1;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 2rem;
+  padding: 4rem 2rem 2rem 2rem;
+  max-width: 90%;
+  max-height: 90%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: zoomIn 0.3s ease-out;
+  text-align: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1e293b;
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.close-button-bottom {
+  margin-top: 1.5rem;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.close-button-bottom:hover {
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  color: #334155;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.modal-image:hover {
+  transform: scale(1.02);
+}
+
+.modal-title {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Horizontal Timeline Styles */
+.horizontal-timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto 4rem auto;
+  z-index: 2;
+}
+
+.timeline-line-horizontal {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6, #ec4899);
+  transform: translateY(-50%);
+  border-radius: 2px;
+  animation: drawLineHorizontal 2s ease-out forwards;
+}
+
+@keyframes drawLineHorizontal {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.timeline-item-horizontal {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.achievement-card-horizontal {
+  background: #fff;
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(50px);
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out forwards;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  max-width: 600px;
+  width: 100%;
+}
+
+@keyframes slideInUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.achievement-card-horizontal:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Vertical Grid Styles */
+.vertical-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.achievement-card-vertical {
+  background: #fff;
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(50px);
+  opacity: 0;
+  animation: slideInUp 0.8s ease-out forwards;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: fit-content;
+}
+
+.achievement-card-vertical:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-content-vertical {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.icon-container-vertical {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.achievement-icon-vertical {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.achievement-card-vertical:hover .achievement-icon-vertical {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.6), 0 0 30px rgba(34, 197, 94, 0.4), 0 0 45px rgba(34, 197, 94, 0.2);
+}
+
+.text-content-vertical {
+  flex: 1;
+}
+
+.achievement-title-vertical {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.achievement-card-vertical:hover .achievement-title-vertical {
+  color: #1e293b;
+}
+
+.achievement-description-vertical {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.year-badge-vertical {
+  display: inline-block;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 8px rgba(59,130,246,0.3);
+  transition: transform 0.3s ease;
+}
+
+.achievement-card-vertical:hover .year-badge-vertical {
+  transform: scale(1.05);
+}
+
+.card-ribbon-vertical {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 50% 100%, 0 50%);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.achievement-card-vertical:hover .card-ribbon-vertical {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vertical-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .achievement-card-vertical {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .achievement-icon-vertical {
+    width: 100px;
+    height: 100px;
+  }
+
+  .achievement-title-vertical {
+    font-size: 1.1rem;
+  }
+
+  .achievement-description-vertical {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .year-badge-vertical {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .timeline-line-horizontal {
+    height: 3px;
+  }
+
+  .achievement-card-horizontal {
+    padding: 1.5rem;
+  }
+
+  .achievement-title {
+    font-size: 1.25rem;
+  }
+
+  .achievement-description {
+    font-size: 0.9rem;
+  }
+
+  .year-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .achievement-icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card-ribbon, .card-ribbon-vertical {
+    width: 50px;
+    height: 50px;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .achievement-card-vertical {
+    padding: 1.25rem;
+  }
+
+  .achievement-icon-vertical {
+    width: 80px;
+    height: 80px;
+  }
+
+  .achievement-title-vertical {
+    font-size: 1rem;
+  }
+
+  .achievement-description-vertical {
+    font-size: 0.8rem;
+  }
+
+  .year-badge-vertical {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .achievement-card-horizontal {
+    padding: 1.25rem;
+  }
+
+  .achievement-title {
+    font-size: 1.1rem;
+  }
+
+  .achievement-description {
+    font-size: 0.85rem;
+  }
+
+  .year-badge {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  .achievement-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .card-ribbon, .card-ribbon-vertical {
+    width: 40px;
+    height: 40px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}
