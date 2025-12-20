@@ -26,8 +26,71 @@ export class AcheivementsComponent {
     }
   ];
 
+  achievementHighlights = [
+    "Secured Top 68 Local Rank in ProjectEuler+ through relentless problem-solving",
+    "3rd Place Winner in CODEFUSE'24 Hackathon after intense coding sessions",
+    "Mastered algorithmic challenges and mathematical puzzles with dedication",
+    "Transformed complex problems into elegant solutions through persistent effort",
+    "Earned recognition for programming excellence and innovative thinking",
+    "Pushed boundaries of coding skills to achieve competitive excellence",
+    "Demonstrated unwavering commitment to mastering programming challenges",
+    "Achieved competitive success through countless hours of practice and learning"
+  ];
+
+  currentQuote: string = '';
+  currentIndex: number = 0;
+  isTyping: boolean = true;
+  showCursor: boolean = true;
   selectedAchievement: any = null;
   showModal = false;
+
+  constructor() {
+    this.startTypingAnimation();
+  }
+
+  startTypingAnimation() {
+    this.typeNextSentence();
+  }
+
+  typeNextSentence() {
+    const sentence = this.achievementHighlights[this.currentIndex];
+    this.currentQuote = '';
+    this.isTyping = true;
+
+    let charIndex = 0;
+    const typeInterval = setInterval(() => {
+      if (charIndex < sentence.length) {
+        this.currentQuote += sentence[charIndex];
+        charIndex++;
+      } else {
+        clearInterval(typeInterval);
+        this.isTyping = false;
+
+        // Wait 3 seconds then pop effect and move to next
+        setTimeout(() => {
+          this.popAndTransition();
+        }, 3000);
+      }
+    }, 50); // 50ms per character
+  }
+
+  popAndTransition() {
+    // Add pop class for animation
+    const quoteElement = document.querySelector('.rotating-quote');
+    if (quoteElement) {
+      quoteElement.classList.add('pop-effect');
+    }
+
+    setTimeout(() => {
+      // Remove pop class and move to next sentence
+      if (quoteElement) {
+        quoteElement.classList.remove('pop-effect');
+      }
+
+      this.currentIndex = (this.currentIndex + 1) % this.achievementHighlights.length;
+      this.typeNextSentence();
+    }, 500);
+  }
 
   getRibbonColor(color: string): string {
     const colorMap: { [key: string]: string } = {

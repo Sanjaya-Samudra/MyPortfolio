@@ -7,11 +7,13 @@
     <div class="shape shape-4"></div>
   </div>
 
-  <!-- Header Section -->
-  <div class="header-section">
-    <h1 class="main-title">My Achievements</h1>
-    <p class="subtitle">Milestones that define my journey</p>
-    <div class="title-decoration"></div>
+  <!-- Inspirational Quotes Section -->
+  <div class="quotes-showcase">
+    <div class="rotating-quote">
+      <span class="quote-text">{{ currentQuote }}</span>
+      <span class="typing-cursor" [class.blinking]="isTyping">|</span>
+      <div class="quote-glow"></div>
+    </div>
   </div>
 
   <!-- Horizontal Timeline Section -->
