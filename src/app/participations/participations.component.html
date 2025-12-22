@@ -1,47 +1,240 @@
-<div
-  class="bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 p-12 text-white text-center rounded-lg shadow-2xl mb-16">
-  <h1 class="text-5xl font-extrabold leading-tight mb-4">
-    My Participated Projects
-  </h1>
-  <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
-    Explore the impactful projects I've participated in. These represent my contributions, teamwork, and dedication to
-    building something greater.
-  </p>
-</div>
+<section class="relative w-full min-h-[95vh] flex items-center justify-center overflow-hidden p-4 sm:p-6 lg:p-8 rounded-3xl">
 
-<!-- Participated Projects Section -->
-<div class="container py-8">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <div class="absolute inset-0 z-0">
+        <video class="w-full h-full object-cover scale-105 contrast-110 brightness-90"
+            autoplay muted loop playsinline
+            poster="https://cdn.pixabay.com/video/2019/02/04/21161-315224572.jpg">
+            <source src="https://cdn.pixabay.com/video/2019/02/04/21161-315224572_large.mp4" type="video/mp4">
+        </video>
 
-    <!-- Iterate over participated projects -->
-    <div *ngFor="let project of participatedProjects"
-      class="bg-white p-6 rounded-xl shadow-xl transform hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out"
-      [ngClass]="{
-             'hover:bg-gradient-to-r': true,
-             'hover:from-teal-400 hover:to-cyan-500': project.name === 'Collaborative Web App',
-             'hover:from-pink-400 hover:to-red-500': project.name === 'Mobile E-commerce App',
-             'hover:from-green-400 hover:to-blue-500': project.name === 'AI-based Data Tool'
-           }">
-
-      <!-- SVG Icon -->
-      <div class="flex justify-center items-center mb-4" [ngClass]="project.iconClass">
-        <!-- <svg [ngClass]="project.iconClass" class="w-16 h-16" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path [attr.d]="project.iconPath"></path>
-          </svg> -->
-        <img [src]="project.iconPath" alt="project.name">
-      </div>
-
-      <!-- Project Title -->
-      <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{ project.name }}</h3>
-
-      <!-- Project Description -->
-      <p class="text-gray-600">{{ project.description }}</p>
-
-      <!-- Year of Completion -->
-      <div class="mt-4 text-right">
-        <span [ngClass]="project.yearClass" class="text-lg font-semibold">{{ project.year }}</span>
-      </div>
+        <div class="absolute inset-0 bg-white/20 mix-blend-overlay"></div>
+        <div class="absolute inset-0 bg-noise mix-blend-soft-light opacity-30"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-white/90 via-white/50 to-white/10"></div>
     </div>
 
+    <div class="relative z-10 w-full max-w-[1280px] mx-auto">
+  <!-- Header -->
+  <header class="holo-hero">
+    <div class="mesh mesh-a" aria-hidden="true"></div>
+    <div class="mesh mesh-b" aria-hidden="true"></div>
+    <div class="mesh mesh-c" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-pill" role="note">
+        <span class="pill-dot" aria-hidden="true"></span>
+        Participations
+      </div>
+
+      <h1 class="hero-title">Hackathons & Programs</h1>
+
+      <!-- Typewriter line -->
+      <p class="hero-subtitle" aria-label="Personal tagline">
+        <span class="typewriter" [class.typewriter-reset]="taglineResetPulse">{{ taglineDisplay }}</span>
+      </p>
+
+      <nav class="segmented" role="tablist" aria-label="Participation categories">
+        <button
+          type="button"
+          role="tab"
+          class="seg-btn"
+          [class.seg-active]="activeCategory === 'Hackathons'"
+          [attr.aria-selected]="activeCategory === 'Hackathons'"
+          (click)="setCategory('Hackathons')"
+          id="tab-hackathons"
+          aria-controls="panel-hackathons"
+        >
+          Hackathons
+          <span class="seg-count">{{ currentCounts.hackathons }}</span>
+        </button>
+
+        <button
+          type="button"
+          role="tab"
+          class="seg-btn"
+          [class.seg-active]="activeCategory === 'Programs'"
+          [attr.aria-selected]="activeCategory === 'Programs'"
+          (click)="setCategory('Programs')"
+          id="tab-programs"
+          aria-controls="panel-programs"
+        >
+          Programs
+          <span class="seg-count">{{ currentCounts.programs }}</span>
+        </button>
+
+        <div class="seg-spacer" aria-hidden="true"></div>
+
+        <div class="deck-controls" aria-label="Deck navigation controls">
+          <button type="button" class="ctl" (click)="prev()" [disabled]="currentProjects.length <= 1" aria-label="Previous">
+            ‹
+          </button>
+
+          <div class="progress" aria-label="Deck position">
+            <span class="p-strong">{{ currentIndex + 1 }}</span>
+            <span class="p-weak">/ {{ currentProjects.length }}</span>
+          </div>
+
+          <button type="button" class="ctl" (click)="next()" [disabled]="currentProjects.length <= 1" aria-label="Next">
+            ›
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Stage -->
+  <main
+    class="holo-stage"
+    role="tabpanel"
+    [attr.aria-labelledby]="activeCategory === 'Hackathons' ? 'tab-hackathons' : 'tab-programs'"
+    [attr.id]="activeCategory === 'Hackathons' ? 'panel-hackathons' : 'panel-programs'"
+    aria-label="Participation deck"
+  >
+    <!-- Icon rail -->
+    <div class="rail" aria-label="Quick jump thumbnails">
+      <button
+        type="button"
+        class="thumb"
+        *ngFor="let p of currentProjects; let i = index; trackBy: trackByName"
+        (click)="goTo(i)"
+        [class.thumb-active]="i === currentIndex"
+        [style.--accent]="p.accent"
+        [attr.aria-label]="'Jump to ' + p.name"
+      >
+        <img [src]="p.iconPath" [alt]="p.name + ' logo'" loading="lazy" />
+        <span class="thumb-ring" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- Deck container (hard clipped) -->
+    <section class="deck-shell">
+      <div class="deck-orbit" aria-hidden="true"></div>
+      <div class="deck-orbit deck-orbit-2" aria-hidden="true"></div>
+      <div class="deck-glow" aria-hidden="true"></div>
+
+      <div class="deck" aria-label="Card deck">
+        <article
+          *ngFor="let project of currentProjects; let i = index; trackBy: trackByName"
+          class="card"
+          [class.card-hidden]="getSlot(i) === 99"
+          [class.card-prev]="getSlot(i) === -1"
+          [class.card-active]="getSlot(i) === 0"
+          [class.card-next]="getSlot(i) === 1"
+          [style.--accent]="project.accent"
+          [attr.aria-hidden]="getSlot(i) === 99 ? 'true' : 'false'"
+          (mousemove)="onCardMove($event)"
+          (mouseleave)="onCardLeave($event)"
+          (click)="getSlot(i) === -1 ? prev() : (getSlot(i) === 1 ? next() : null)"
+          tabindex="0"
+        >
+          <div class="frame" aria-hidden="true"></div>
+          <div class="spot" aria-hidden="true"></div>
+
+          <div class="card-inner">
+            <div class="top">
+              <div class="brand">
+                <div class="logo">
+                  <img [src]="project.iconPath" [alt]="project.name + ' logo'" loading="lazy" />
+                </div>
+
+                <div class="titles">
+                  <h2 class="title">{{ project.name }}</h2>
+                  <div class="meta">
+                    <span class="chip">{{ project.category }}</span>
+                    <span class="dot" aria-hidden="true"></span>
+                    <span class="year">{{ project.year }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="badge" aria-label="Highlight badge">{{ project.highlight }}</div>
+            </div>
+
+            <p class="desc">
+              {{ project.description }}
+            </p>
+
+            <div class="tags" aria-label="Tags">
+              <span class="tag" *ngFor="let t of project.tags">{{ t }}</span>
+            </div>
+
+            <div class="actions">
+              <button
+                *ngIf="project.certificateUrl"
+                type="button"
+                class="btn btn-primary"
+                (click)="openCertificate(project); $event.stopPropagation();"
+                aria-label="View participation certificate"
+              >
+                View Certificate
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-ghost"
+                (click)="next(); $event.stopPropagation();"
+                [disabled]="currentProjects.length <= 1"
+                aria-label="Next item"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <div *ngIf="currentProjects.length === 0" class="empty" role="status" aria-live="polite">
+          <div class="empty-title">No items in this category yet</div>
+          <div class="empty-sub">Add participations under {{ activeCategory }}.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+</section>
+
+<!-- Certificate modal -->
+<div *ngIf="activeCertificate" class="modal" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+  <div class="modal-backdrop" (click)="closeCertificate()" aria-hidden="true"></div>
+
+  <div class="modal-card" [style.--accent]="activeCertificate.accent">
+    <div class="modal-head">
+      <div class="mh-left">
+        <div class="mh-title">{{ activeCertificate.name }}</div>
+        <div class="mh-sub">Participation Certificate</div>
+      </div>
+
+      <button type="button" class="modal-close" (click)="closeCertificate()" aria-label="Close certificate">
+        ✕
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <iframe
+        *ngIf="isPdf(activeCertificate.certificateUrl)"
+        class="viewer"
+        [src]="safeUrl(activeCertificate.certificateUrl)"
+        title="Certificate PDF"
+      ></iframe>
+
+      <img
+        *ngIf="!isPdf(activeCertificate.certificateUrl)"
+        class="viewer-img"
+        [src]="activeCertificate.certificateUrl!"
+        [alt]="activeCertificate.name + ' certificate'"
+      />
+    </div>
+
+    <div class="modal-foot">
+      <a
+        class="btn btn-primary"
+        [href]="activeCertificate.certificateUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open in New Tab
+      </a>
+      <button type="button" class="btn btn-ghost" (click)="closeCertificate()">Close</button>
+    </div>
   </div>
 </div>
