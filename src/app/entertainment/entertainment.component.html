@@ -1,42 +1,188 @@
-<div class="bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500 rounded-xl min-h-screen flex items-center justify-center p-6 ">
+<div class="stage"
+     (pointerdown)="onPointerDown($event)"
+     (pointerup)="onPointerUp($event)">
 
-    <div class="bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 shadow-xl rounded-3xl p-8 w-full max-w-7xl">
-      
-      <!-- Header -->
-      <header class="text-center text-3xl font-bold text-gray-800 mb-6">
-        🎮 Entertainment Showcase 🎬
-      </header>
-  
-      <!-- Category Tabs -->
-      <section class="text-center mb-6">
-        <button *ngFor="let category of categories" 
-          (click)="filterCategory(category)" 
-          class="px-4 py-2 mx-2 rounded-full transition duration-300 text-white"
-          [ngClass]="{'bg-blue-400 hover:bg-blue-500': category === 'Games',
-                      'bg-red-400 hover:bg-red-500': category === 'Videos',
-                      'bg-green-400 hover:bg-green-500': category === 'Editing',
-                      'bg-yellow-400 hover:bg-yellow-500': category === 'Software'}">
-          {{ category }}
+  <video class="bg" autoplay muted loop playsinline preload="auto">
+    <source src="https://cdn.pixabay.com/video/2019/02/04/21161-315224572_large.mp4" type="video/mp4" />
+  </video>
+
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="beams" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="panel app">
+    <header class="hero">
+      <div class="hero-left">
+        <div class="emblem" aria-hidden="true">
+          <div class="emblem-core"></div>
+          <div class="emblem-ring"></div>
+          <div class="emblem-ring r2"></div>
+          <div class="sparkle" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero-text">
+          <div class="kicker">PERSONAL STUDIO</div>
+          <h1 class="hero-title">Entertainment Showcase</h1>
+
+          <div class="subline">
+            <span class="sub-badge">Browse</span>
+            <span class="sub-dot"></span>
+            <span class="sub-badge">Tap icons to jump</span>
+            <span class="sub-dot"></span>
+            <span class="sub-badge">Swipe to move</span>
+          </div>
+
+          <div class="hero-underline" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <nav class="cats" aria-label="Categories">
+        <button *ngFor="let c of categories"
+                type="button"
+                class="cat"
+                [class.active]="c === selectedCategory"
+                (click)="selectCategory(c)"
+                [attr.data-cat]="c">
+          <span class="cat-orb" aria-hidden="true"></span>
+          <span class="cat-label">{{ c }}</span>
+          <span class="cat-sheen" aria-hidden="true"></span>
         </button>
-      </section>
-  
-      <!-- Showcase Grid -->
-      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div *ngFor="let item of filteredItems" 
-          class="relative group overflow-hidden rounded-2xl shadow-md bg-gray-200 hover:bg-gray-300 transition duration-300">
-          <img [src]="item.image" class="w-full h-56 object-cover rounded-t-2xl transition duration-300 group-hover:scale-105">
-          <div class="p-4">
-            <h3 class="text-xl font-semibold text-gray-800">{{ item.title }}</h3>
-            <p class="text-gray-600">{{ item.description }}</p>
+      </nav>
+    </header>
+
+    <main class="carousel" aria-label="Carousel">
+      <button class="nav prev" type="button" (click)="prev()" aria-label="Previous">
+        <span aria-hidden="true">‹</span>
+      </button>
+
+      <div class="viewport" aria-label="Viewport">
+        <div class="track" [ngStyle]="trackStyle()">
+          <section *ngFor="let item of filteredItems; let i = index; trackBy: trackById"
+                   class="slide"
+                   [class.active]="i === activeIndex">
+
+            <div class="cardShell">
+              <article class="card">
+                <div class="left">
+                  <div class="mediaFrame">
+                    <img class="heroImg"
+                         [class.fading]="isPreviewFading(item)"
+                         [src]="imgSrc(item.images[getPreviewIndex(item)])"
+                         [alt]="item.title + ' preview'"
+                         loading="lazy" />
+                  </div>
+
+                  <div class="badge">{{ item.category }}</div>
+
+                  <div class="miniCount" *ngIf="item.images.length > 1">
+                    {{ item.images.length }} shots
+                  </div>
+                </div>
+
+                <div class="right">
+                  <div class="heading">
+                    <h3 class="title">{{ item.title }}</h3>
+                    <div class="hint">Preview is cropped • Use Gallery for full view</div>
+                    <div class="dividerGlow" aria-hidden="true"></div>
+                  </div>
+
+                  <div class="scrollArea">
+                    <div class="metaGrid" aria-label="Quick stats">
+                      <div class="metaChip">
+                        <div class="metaLabel">Category</div>
+                        <div class="metaValue">{{ item.category }}</div>
+                      </div>
+                      <div class="metaChip">
+                        <div class="metaLabel">Photos</div>
+                        <div class="metaValue">{{ item.images.length }}</div>
+                      </div>
+                      <div class="metaChip">
+                        <div class="metaLabel">Tags</div>
+                        <div class="metaValue">{{ item.tags.length }}</div>
+                      </div>
+                    </div>
+
+                    <div class="tags" aria-label="Tags">
+                      <span class="tag" *ngFor="let t of item.tags">{{ t }}</span>
+                    </div>
+                  </div>
+
+                  <div class="actions">
+                    <button class="galleryBtn" type="button" (click)="openModal(item, 0)">
+                      View Gallery
+                      <span class="count">{{ item.images.length }}</span>
+                      <span class="shine" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+          </section>
+        </div>
+      </div>
+
+      <button class="nav next" type="button" (click)="next()" aria-label="Next">
+        <span aria-hidden="true">›</span>
+      </button>
+    </main>
+
+    <footer class="iconBar" aria-label="Item navigation">
+      <button *ngFor="let item of filteredItems; let i = index"
+              type="button"
+              class="iconBtn"
+              [class.on]="i === activeIndex"
+              (click)="goTo(i)"
+              [attr.aria-label]="'Open ' + item.title">
+        <img class="iconImg" [src]="imgSrc(item.images[0])" alt="" />
+        <div class="iconPreview">
+          <div class="pTitle">{{ item.title }}</div>
+        </div>
+      </button>
+    </footer>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modalOverlay" *ngIf="modalOpen" (click)="closeModal()" role="dialog" aria-modal="true">
+    <div class="modal" (click)="$event.stopPropagation()">
+
+      <div class="modalTop">
+        <div class="modalTitle">
+          {{ modalItem?.title }}
+          <span class="modalMeta" *ngIf="modalItem">• {{ modalImageIndex + 1 }} / {{ modalItem.images.length }}</span>
+        </div>
+        <button class="modalClose" type="button" (click)="closeModal()" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modalBody">
+        <button class="mNav" type="button" (click)="modalPrev()" aria-label="Previous image">‹</button>
+
+        <div class="modalStage">
+          <div class="modalImageFrame">
+            <img class="modalImg"
+                 *ngIf="modalItem"
+                 [src]="imgSrc(modalItem.images[modalImageIndex])"
+                 [alt]="modalItem.title + ' image'"
+                 loading="eager" />
           </div>
         </div>
-      </section>
-  
-      <!-- Footer -->
-      <footer class="text-center text-gray-500 mt-6">
-        Made with ❤️ by You | Entertainment Hub
-      </footer>
-  
+
+        <button class="mNav" type="button" (click)="modalNext()" aria-label="Next image">›</button>
+      </div>
+
+      <div class="modalThumbs" *ngIf="modalItem">
+        <button class="mThumb"
+                *ngFor="let img of modalItem.images; let idx = index"
+                type="button"
+                [class.on]="idx === modalImageIndex"
+                (click)="selectModalImage(idx)"
+                [attr.aria-label]="'Select image ' + (idx + 1)">
+          <img [src]="imgSrc(img)" alt="" />
+        </button>
+      </div>
+
     </div>
   </div>
-  
+
+</div>
