@@ -1,30 +1,59 @@
-/* learnings.component.css */
-
-/* Add a colorful gradient background to the entire component */
-.container {
-  background: linear-gradient(45deg, #f0f4f8, #d4e1e9);
-  border-radius: 10px;
+/* Custom Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* Style for the "Read More" button */
-button {
-  background-color: #6b78e6;
-  border: none;
-  color: white;
-  padding: 12px 24px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-button:hover {
-  background-color: #4f64b5;
+/* Removed Holographic Text Animation as it's no longer used in the new header style */
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
 }
 
-/* Add shadow to the resource cards */
-.w-64 {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* Grid Pattern */
+.bg-grid-pattern {
+    background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
 }
 
-.w-64:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+/* Glow Effect */
+.glow-text {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradient-x {
+    0%, 100% { background-size: 200% 200%; background-position: left center; }
+    50% { background-size: 200% 200%; background-position: right center; }
+}
+.animate-gradient-x {
+    animation: gradient-x 4s ease infinite;
 }
