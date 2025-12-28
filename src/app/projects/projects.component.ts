@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, HostListener, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 interface Project {
   name: string;
@@ -17,15 +17,21 @@ interface Project {
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent implements OnInit, OnDestroy {
+export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('scene', { static: true }) sceneRef!: ElementRef<HTMLElement>;
+
+  // Reference to video for speed control
+  @ViewChild('bgVideo') bgVideoRef!: ElementRef<HTMLVideoElement>;
 
   activeProjectIndex = 0;
   isMobile = false;
   isPlaying = true;
   interval: any;
 
-  // View Settings (kept)
+  // Custom Dropdown State
+  isDropdownOpen = false;
+
+  // View Settings
   tiltX = 0;
   yOffset = 0;
 
@@ -123,11 +129,15 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.checkScreenSize();
-
-    // Keep initial alignment correct
     this.rotationDeg = this.targetDegForIndex(this.activeProjectIndex);
-
     this.startAutoRotate();
+  }
+
+  // Set video speed here to 0.5 (Half Speed)
+  ngAfterViewInit() {
+    if (this.bgVideoRef?.nativeElement) {
+      this.bgVideoRef.nativeElement.playbackRate = 0.5;
+    }
   }
 
   ngOnDestroy() {
@@ -137,6 +147,15 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   @HostListener('window:resize')
   onResize() {
     this.checkScreenSize();
+  }
+
+  // Close dropdown if clicking outside
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.jump-container')) {
+      this.isDropdownOpen = false;
+    }
   }
 
   checkScreenSize() {
@@ -158,7 +177,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   startAutoRotate() {
     clearInterval(this.interval);
     this.interval = setInterval(() => {
-      if (this.isPlaying && !this.isDragging) {
+      if (this.isPlaying && !this.isDragging && !this.isDropdownOpen) {
         this.rotate('next');
       }
     }, 3000);
@@ -179,7 +198,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     return -(index * this.anglePerCard());
   }
 
-  // Normalize delta to shortest path (-180..180)
   private shortestDelta(from: number, to: number): number {
     let d = (to - from) % 360;
     if (d > 180) d -= 360;
@@ -211,10 +229,10 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   bringToFront(index: number) {
+    if (this.isDragging) return;
     this.goTo(index);
   }
 
-  // Jump to ANY index with shortest rotation path (fixes “only adjacent” feeling)
   goTo(index: number) {
     const target = this.targetDegForIndex(index);
     const delta = this.shortestDelta(this.rotationDeg, target);
@@ -222,13 +240,17 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.activeProjectIndex = index;
   }
 
-  onSelectJump(e: Event) {
-    const val = Number((e.target as HTMLSelectElement).value);
-    if (!Number.isFinite(val)) return;
-    this.goTo(val);
+  // ========= Custom Dropdown Logic =========
+  toggleDropdown(event: Event) {
+    event.stopPropagation();
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  // ========= Your existing transforms =========
+  selectJump(index: number) {
+    this.goTo(index);
+    this.isDropdownOpen = false;
+  }
+
   getContainerTransform(): string {
     return `translateY(${this.yOffset}px) rotateX(${this.tiltX}deg) rotateY(${this.rotationDeg}deg)`;
   }
@@ -274,7 +296,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   // ========= Drag rotate (mouse + touch) =========
   onDragStart(e: PointerEvent) {
     const target = e.target as HTMLElement | null;
-    if (target?.closest('a,button,select,option')) return;
+    if (target?.closest('a,button,.custom-options-list')) return; // Allow links and dropdowns
     if (e.pointerType === 'mouse' && e.button !== 0) return;
 
     this.isDragging = true;
@@ -289,6 +311,10 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     if (!this.isDragging || this.dragPointerId !== e.pointerId) return;
 
     const dx = e.clientX - this.dragStartX;
+    if (Math.abs(dx) > 5) {
+      // Dragging confirmed
+    }
+
     const sensitivity = this.isMobile ? 0.22 : 0.18;
     this.rotationDeg = this.dragStartRotation + (dx * sensitivity);
   }
@@ -297,9 +323,11 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     if (!this.isDragging) return;
     if (e && this.dragPointerId !== e.pointerId) return;
 
-    this.isDragging = false;
-    this.dragPointerId = null;
+    setTimeout(() => {
+      this.isDragging = false;
+    }, 50);
 
+    this.dragPointerId = null;
     this.snapToNearest();
   }
 

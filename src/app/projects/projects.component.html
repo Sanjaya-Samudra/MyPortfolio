@@ -5,25 +5,17 @@
      (touchmove)="onSceneTouchMove($event)"
      (touchend)="onScenePointerLeave()">
 
-  <!-- WOW Light Background -->
-  <div class="aurora-bg absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="aurora-blob blob-1"></div>
-    <div class="aurora-blob blob-2"></div>
-    <div class="aurora-blob blob-3"></div>
+  <div class="video-bg-container absolute inset-0 overflow-hidden pointer-events-none">
+    <video #bgVideo autoplay loop muted playsinline class="bg-video">
+      <source src="https://cdn.pixabay.com/video/2019/02/04/21161-315224572_large.mp4" type="video/mp4">
+    </video>
 
-    <div class="bg-mesh"></div>
-    <div class="bg-beams"></div>
-    <div class="bg-orbit orbit-1"></div>
-    <div class="bg-orbit orbit-2"></div>
-    <div class="bg-sparkles"></div>
-
-    <div class="aurora-grid absolute inset-0"></div>
-    <div class="aurora-vignette absolute inset-0"></div>
-
-    <div class="absolute inset-0 noise-layer"></div>
+    <div class="video-overlay-color"></div>
+    <div class="video-overlay-vignette"></div>
+    <div class="video-overlay-grid"></div>
+    <div class="video-overlay-noise"></div>
   </div>
 
-  <!-- Carousel -->
   <div class="carousel-wrapper"
        (pointerdown)="onDragStart($event)"
        (pointermove)="onDragMove($event)"
@@ -49,7 +41,6 @@
           <div class="card-sheen absolute -inset-full top-0 block h-[200%] w-[200%] -rotate-45 translate-x-[-70%]
                       transition-all duration-1000 group-hover:translate-x-[55%] z-10 pointer-events-none"></div>
 
-          <!-- image -->
           <div class="relative h-[50%] w-full p-2 z-20">
             <div class="w-full h-full rounded-[24px] overflow-hidden shadow-sm relative group/image ring-1 ring-slate-100/60">
               <img [src]="p.image" class="w-full h-full object-cover transition-transform duration-700 group-hover/image:scale-110">
@@ -60,7 +51,6 @@
             </div>
           </div>
 
-          <!-- content -->
           <div class="relative h-[50%] flex flex-col justify-between px-4 pb-4 pt-2 z-20">
             <div class="flex flex-col gap-2">
               <h3 class="text-sm md:text-base font-black text-slate-800 leading-none tracking-tight drop-shadow-sm">
@@ -104,7 +94,6 @@
     </div>
   </div>
 
-  <!-- Controls (in-flow, never overlaps carousel) -->
   <div class="controls-container z-[100]">
     <div class="carousel-mov">
 
@@ -139,21 +128,46 @@
           </button>
         </div>
 
-        <!-- Next-level UX: Quick Jump (doesn't break UI) -->
-        <div class="jump">
-          <div class="jump-label">Quick jump</div>
-          <select class="jump-select"
-                  [value]="activeProjectIndex"
-                  (change)="onSelectJump($event)"
-                  aria-label="Quick jump to project">
-            <option *ngFor="let p of projects; let i = index" [value]="i">
-              {{ p.name }} ({{ p.year }})
-            </option>
-          </select>
+        <div class="jump-container relative">
+          <button class="jump-glass cursor-pointer" (click)="toggleDropdown($event)">
+              <span class="jump-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <path d="m21 21-4.3-4.3"></path>
+                </svg>
+              </span>
+
+            <span class="jump-text truncate max-w-[140px] text-white font-semibold text-sm">
+                 {{ projects[activeProjectIndex].name }}
+              </span>
+
+            <div class="jump-arrow ml-3" [class.rotate-180]="isDropdownOpen">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </div>
+          </button>
+
+          <div *ngIf="isDropdownOpen"
+               class="custom-options-list overflow-y-auto rounded-2xl border border-white/20 bg-slate-900/80 backdrop-blur-xl shadow-2xl">
+
+            <div *ngFor="let p of projects; let i = index"
+                 (click)="selectJump(i)"
+                 class="flex items-center justify-between px-4 py-3 cursor-pointer transition-colors duration-200 border-b border-white/5 last:border-0 hover:bg-indigo-500/30 group">
+
+                <span class="text-sm font-medium text-slate-200 group-hover:text-white transition-colors">
+                  {{ p.name }}
+                </span>
+
+              <span class="text-[10px] font-bold opacity-50 group-hover:opacity-100 bg-white/10 px-2 py-0.5 rounded text-white">
+                  {{ p.year }}
+                </span>
+            </div>
+          </div>
         </div>
+
       </div>
 
-      <!-- Dots (click any dot => jump with shortest rotation path) -->
       <div class="dots" aria-label="Project indicators">
         <button *ngFor="let p of projects; let i = index"
                 class="dot"
