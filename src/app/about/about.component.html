@@ -1,38 +1,176 @@
-<section id="about" class="about-section">
-    <div class="container">
-      <div class="about-heading">
-        <h2>Hey, I'm <span class="highlight">Sanjaya Samudra</span></h2>
-        <p>A passionate <span class="highlight">Angular Developer</span>, a curious problem solver, and a lifelong learner.</p>
+<section id="about" class="about" (mousemove)="onSpotlightMove($event)" (mouseleave)="onSpotlightLeave()">
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+  </div>
+
+  <div class="spotlight" [style.transform]="spotlightTransform" aria-hidden="true"></div>
+
+  <div class="bg" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+    <span class="grain"></span>
+  </div>
+
+  <div class="wrap">
+    <!-- Header kept compact -->
+    <header class="hdr">
+      <div class="badge">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="badge-text">Open to collaboration</span>
       </div>
-  
-      <div class="about-content">
-        <div class="about-description">
-          <p>
-            Welcome to my digital space! I’m a full-stack developer with a love for building sleek, responsive, and scalable applications. Code is my playground, and I thrive on transforming complex challenges into elegant solutions.
+
+      <h2 class="h">
+        Hi, I’m <span class="name">Sanjaya Samudra</span>
+      </h2>
+
+      <p class="sub">
+        <span class="type">{{ displayedText }}</span>
+        <span class="caret" aria-hidden="true"></span>
+      </p>
+    </header>
+
+    <!-- Dense premium grid -->
+    <div class="grid">
+      <!-- Identity / Actions -->
+      <aside class="card identity">
+        <div class="card-in">
+          <div class="kicker">Identity</div>
+          <div class="title">Full-Stack Developer</div>
+          <p class="text">
+            I build sleek, scalable applications with an obsession for interaction quality, performance, and clean architecture.
           </p>
-          <p>
-            I specialize in <span class="highlight">Angular</span>, crafting smooth user experiences and creating dynamic interfaces. But that’s just the beginning – I also dabble in backend technologies, UI/UX design, and everything in between.
+
+          <div class="actions">
+            <a class="btn primary" href="mailto:sanjayasamudraelpitiya@gmail.com">Get in touch</a>
+            <a class="btn ghost" [href]="cvUrl" download>Download CV</a>
+          </div>
+
+          <div class="tags">
+            <span class="tag">Angular</span>
+            <span class="tag">Design Systems</span>
+            <span class="tag">Performance</span>
+            <span class="tag">Accessibility</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Avatar Portal (center hero) -->
+      <section class="card portal">
+        <div class="card-in portal-in">
+          <div class="portal-head">
+            <div>
+              <div class="kicker">Profile</div>
+              <div class="title">Developer • Builder • Learner</div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            class="avatar"
+            (click)="rotateImage()"
+            (mousemove)="onAvatarMove($event)"
+            (mouseleave)="onAvatarLeave()"
+            aria-label="Rotate avatar"
+          >
+            <span class="ring r1" aria-hidden="true"></span>
+            <span class="ring r2" aria-hidden="true"></span>
+            <span class="ring r3" aria-hidden="true"></span>
+
+            <span class="glow" aria-hidden="true"></span>
+
+            <img
+              src="dragon-ball-z.jpg"
+              alt="Sanjaya Samudra"
+              class="avatar-img"
+              [style.transform]="avatarTransform"
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+        </div>
+      </section>
+
+      <!-- Story stack -->
+      <section class="card story">
+        <div class="card-in">
+          <div class="kicker">What I do</div>
+          <div class="title">Complex → Simple</div>
+          <p class="text">
+            I turn requirements into fast, responsive, and maintainable interfaces with <span class="pill">Angular</span>,
+            reusable components, and consistent patterns.
           </p>
-          <p>
-            My journey started with a curiosity about how things work, and that curiosity has evolved into a career where I get to build products that empower users and solve real-world problems.
+
+          <div class="divider"></div>
+
+          <div class="kicker">How I work</div>
+          <div class="title">Systems, not hacks</div>
+          <p class="text">
+            Clean architecture, predictable state, and a strong focus on <span class="pill">performance</span> and
+            <span class="pill">accessibility</span>.
           </p>
-          <p>
-            When I’m not writing code, you’ll find me <span class="highlight">exploring new technologies</span>, <span class="highlight">learning about design principles</span>, or indulging in my love for <span class="highlight">photography and gaming</span>.
-          </p>
-          <p>
-            I believe in the power of collaboration and constantly strive to learn from others while contributing to open-source projects, sharing knowledge, and embracing new ideas. Every day is an opportunity to improve, to innovate, and to create something extraordinary.
+
+          <div class="divider"></div>
+
+          <div class="kicker">Outside code</div>
+          <div class="title">Curious by default</div>
+          <p class="text">
+            Exploring new technologies, learning design principles, and recharging with
+            <span class="pill">photography</span> and <span class="pill">gaming</span>.
           </p>
         </div>
-  
-        <div class="about-image">
-          <!-- Optional: Add an image of yourself here -->
-          <img src="dragon-ball-z.jpg" alt="Your Portrait" class="profile-pic"/>
+      </section>
+
+      <!-- Full-width stack belt -->
+      <section class="card belt">
+        <div class="card-in">
+          <div class="belt-head">
+            <h3 class="belt-title">Tech Stack</h3>
+            <div class="belt-sub">A snapshot of what I use to build.</div>
+          </div>
+
+          <div class="marquee left" aria-label="Technologies">
+            <div class="fade" aria-hidden="true"></div>
+            <div class="track">
+              <div class="group">
+                <div *ngFor="let tech of technologies; trackBy: trackByName" class="chip">
+                  <img [src]="tech.icon" [alt]="tech.name" class="chip-icon" loading="lazy" decoding="async" />
+                  <span class="chip-text">{{ tech.name }}</span>
+                </div>
+              </div>
+              <div class="group" aria-hidden="true">
+                <div *ngFor="let tech of technologies; trackBy: trackByName" class="chip">
+                  <img [src]="tech.icon" [alt]="tech.name" class="chip-icon" loading="lazy" decoding="async" />
+                  <span class="chip-text">{{ tech.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="marquee right" aria-label="Tools">
+            <div class="fade" aria-hidden="true"></div>
+            <div class="track">
+              <div class="group">
+                <div *ngFor="let tool of tools; trackBy: trackByName" class="chip chip-soft">
+                  <img [src]="tool.icon" [alt]="tool.name" class="chip-icon" loading="lazy" decoding="async" />
+                  <span class="chip-text">{{ tool.name }}</span>
+                </div>
+              </div>
+              <div class="group" aria-hidden="true">
+                <div *ngFor="let tool of tools; trackBy: trackByName" class="chip chip-soft">
+                  <img [src]="tool.icon" [alt]="tool.name" class="chip-icon" loading="lazy" decoding="async" />
+                  <span class="chip-text">{{ tool.name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta">
+            <div class="cta-title">Let's build something exceptional.</div>
+            <div class="cta-sub">You bring the idea. I'll bring the craft.</div>
+          </div>
         </div>
-      </div>
-  
-      <div class="about-footer">
-        <p>Let’s build something amazing together!</p>
-        <a href="mailto:sanjayasamudraelpitiya@gmail.com" class="btn btn-primary">Get in Touch</a>
-      </div>
+      </section>
     </div>
-  </section>
+  </div>
+</section>
