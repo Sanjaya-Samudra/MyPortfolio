@@ -3,6 +3,23 @@
     <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
   </div>
 
+  <!-- ✅ NEW: Background video layer (barely visible, respects rounded corners) -->
+  <div class="bg-video" aria-hidden="true">
+    <video
+      class="bg-video__media"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+    >
+      <source
+        src="https://cdn.pixabay.com/video/2019/02/04/21161-315224572_large.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+
   <div class="spotlight" [style.transform]="spotlightTransform" aria-hidden="true"></div>
 
   <div class="bg" aria-hidden="true">

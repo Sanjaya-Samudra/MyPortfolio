@@ -134,6 +134,7 @@ export class AboutComponent implements OnInit, OnDestroy {
     const el = event.currentTarget as HTMLElement;
     el.classList.add('spot-on');
     const rect = el.getBoundingClientRect();
+
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 

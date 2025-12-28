@@ -17,6 +17,35 @@
 }
 .wrap{ max-width: 1180px; margin: 0 auto; position:relative; z-index:3; }
 
+/* ✅ NEW: Background video layer (barely visible under your existing background) */
+.bg-video{
+  position:absolute;
+  inset:0;
+  z-index:0;              /* behind spotlight/blobs/content */
+  overflow:hidden;        /* clips video to rounded corners */
+  border-radius: inherit; /* keeps same corners */
+  pointer-events:none;
+}
+
+.bg-video__media{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  /* Barely visible */
+  opacity:0.08;           /* adjust 0.05 - 0.12 if needed */
+  filter: blur(1px) saturate(0.85) contrast(0.9);
+}
+
+/* Soft wash so it stays subtle and blends with your design */
+.bg-video::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius: inherit;
+  background: rgba(255,255,255,0.35);
+}
+
 /* Grid Pattern Background */
 .bg-grid-pattern {
   background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
@@ -86,14 +115,9 @@
   padding-bottom: 0.12em;
 }
 
-
 @keyframes nameZoom {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.03);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 .sub{
   margin-top: 10px;
@@ -439,12 +463,8 @@
     margin-top: 16px;
     padding: 16px 12px;
   }
-  .cta-title{
-    font-size: 1.1rem;
-  }
-  .cta-sub{
-    font-size: 0.9rem;
-  }
+  .cta-title{ font-size: 1.1rem; }
+  .cta-sub{ font-size: 0.9rem; }
 }
 
 /* Animations */
@@ -452,7 +472,7 @@
 @keyframes drift { 0%,100%{ transform: translateY(0) translateX(0);} 50%{ transform: translateY(18px) translateX(12px);} }
 @keyframes pulse { 0%,100%{ box-shadow:0 0 0 7px rgba(34,197,94,.14);} 50%{ box-shadow:0 0 0 10px rgba(34,197,94,.10);} }
 @keyframes glow { 0%,100%{ transform: scale(1); opacity:.68;} 50%{ transform: scale(1.05); opacity:.86;} }
-@keyframes spin { to { transform: rotate(360deg);} }
+@keyframes spin { to{ transform: rotate(360deg);} }
 @keyframes marquee { from{ transform: translateX(0);} to{ transform: translateX(-50%);} }
 
 /* Reduced motion */
