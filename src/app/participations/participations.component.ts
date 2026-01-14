@@ -52,11 +52,23 @@ export class ParticipationsComponent implements OnInit, OnDestroy {
       highlight: 'Top 35'
     },
     {
-      name: 'DevFest - Inter University Hackathon',
+      name: 'Japura Xtreme Inter University Hackathon 2.0',
+      description:
+        'Built and delivered a functional prototype within intense time constraints, demonstrating strong self control, rapid problem-solving, and a confident final pitch. Secured a Top 20 placement through execution quality and clarity.',
+      iconPath: 'JapuraXtreme2.png',
+      certificateUrl: 'JapuraXtreme2.png',
+      year: 2025,
+      accent: '#12b981',
+      category: 'Hackathons',
+      tags: ['Rapid Build', 'Pitch'],
+      highlight: 'Top 20'
+    },
+    {
+      name: 'DevQest - Inter University Hackathon',
       description:
         'Inter-university hackathon participation focused on ideation, UI structure, and delivering a cohesive prototype with strong presentation clarity.',
-      iconPath: 'devfest.png',
-      certificateUrl: 'devfest.pdf',
+      iconPath: 'DevQuest2024.jpeg',
+      certificateUrl: 'DevQuest2024.jpeg',
       year: 2025,
       accent: '#f0438c',
       category: 'Hackathons',
@@ -67,9 +79,9 @@ export class ParticipationsComponent implements OnInit, OnDestroy {
       name: 'SpiritX',
       description:
         'Hackathon centered on solving real-world problems through web/app solutions. Emphasized problem framing, iterative design, and fast delivery of a polished demo.',
-      iconPath: 'spiritx.png',
-      // certificateUrl: 'spiritx.jpg',
-      year: 2025,
+      iconPath: 'SpiritX2024.jpeg',
+      certificateUrl: 'SpiritX2024.jpeg',
+      year: 2024,
       accent: '#22c55e',
       category: 'Hackathons',
       tags: ['Prototype', 'Problem Solving', 'Execution'],
@@ -89,7 +101,7 @@ export class ParticipationsComponent implements OnInit, OnDestroy {
     }
   ];
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.runTypewriter();
