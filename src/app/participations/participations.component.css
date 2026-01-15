@@ -137,7 +137,7 @@ html, body { overflow-x: hidden; }
 .segmented {
   margin-top: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-columns: repeat(3, 1fr) 1fr auto;
   gap: 10px;
   align-items: center;
 }
@@ -475,6 +475,7 @@ html, body { overflow-x: hidden; }
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+  position: relative;
 }
 
 .brand {
@@ -482,6 +483,7 @@ html, body { overflow-x: hidden; }
   gap: 12px;
   align-items: center;
   min-width: 0;
+  flex: 1; /* Ensure it takes available space but shrinks */
 }
 
 .logo {
@@ -521,6 +523,8 @@ html, body { overflow-x: hidden; }
   line-height: 1.18;
   font-weight: 950;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word; 
+  word-break: break-word;
 }
 @media (min-width: 640px) { .title { font-size: 20px; } }
 
@@ -553,12 +557,17 @@ html, body { overflow-x: hidden; }
 
 .badge {
   border-radius: 999px;
-  padding: 9px 12px;
+  padding: 8px 10px;
   border: 1px solid color-mix(in srgb, var(--accent) 28%, rgba(2,6,23,0.10));
   background: rgba(255,255,255,0.96);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 950;
   box-shadow: 0 16px 48px -48px rgba(0,0,0,.62);
+  flex-shrink: 0;
+  text-align: center;
+  white-space: pre-line; /* Allow \n if needed, or stick to normal wrapping */
+  max-width: 90px;
+  line-height: 1.2;
 }
 
 .desc {

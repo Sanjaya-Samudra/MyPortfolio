@@ -27,7 +27,7 @@
         Participations
       </div>
 
-      <h1 class="hero-title">Hackathons & Programs</h1>
+      <h1 class="hero-title">Hackathons, Programs & Open Source</h1>
 
       <!-- Typewriter line -->
       <p class="hero-subtitle" aria-label="Personal tagline">
@@ -63,6 +63,20 @@
           <span class="seg-count">{{ currentCounts.programs }}</span>
         </button>
 
+        <button
+          type="button"
+          role="tab"
+          class="seg-btn"
+          [class.seg-active]="activeCategory === 'Open Source'"
+          [attr.aria-selected]="activeCategory === 'Open Source'"
+          (click)="setCategory('Open Source')"
+          id="tab-opensource"
+          aria-controls="panel-opensource"
+        >
+          Open Source
+          <span class="seg-count">{{ currentCounts.OpenSource }}</span>
+        </button>
+
         <div class="seg-spacer" aria-hidden="true"></div>
 
         <div class="deck-controls" aria-label="Deck navigation controls">
@@ -87,8 +101,8 @@
   <main
     class="holo-stage"
     role="tabpanel"
-    [attr.aria-labelledby]="activeCategory === 'Hackathons' ? 'tab-hackathons' : 'tab-programs'"
-    [attr.id]="activeCategory === 'Hackathons' ? 'panel-hackathons' : 'panel-programs'"
+    [attr.aria-labelledby]="activeCategory === 'Hackathons' ? 'tab-hackathons' : (activeCategory === 'Programs' ? 'tab-programs' : 'tab-opensource')"
+    [attr.id]="activeCategory === 'Hackathons' ? 'panel-hackathons' : (activeCategory === 'Programs' ? 'panel-programs' : 'panel-opensource')"
     aria-label="Participation deck"
   >
     <!-- Icon rail -->

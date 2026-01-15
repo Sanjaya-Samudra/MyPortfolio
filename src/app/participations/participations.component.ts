@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-type Category = 'Hackathons' | 'Programs';
+type Category = 'Hackathons' | 'Programs' | 'Open Source';
 
 interface ParticipatedProject {
   name: string;
@@ -52,13 +52,37 @@ export class ParticipationsComponent implements OnInit, OnDestroy {
       highlight: 'Top 35'
     },
     {
+      name: 'SpiritX',
+      description:
+        'Hackathon centered on solving real-world problems through web/app solutions. Emphasized problem framing, iterative design, and fast delivery of a polished demo.',
+      iconPath: 'SpiritX2024.jpeg',
+      certificateUrl: 'SpiritX2024.jpeg',
+      year: 2024,
+      accent: '#229fc5',
+      category: 'Hackathons',
+      tags: ['Prototype', 'Problem Solving', 'Execution'],
+      highlight: 'Prototype'
+    },
+    {
+      name: 'CODEFUSE 2.0 Inter-Faculty Hackathon',
+      description:
+        'Built and delivered a functional solution under intense time constraints with structured team collaboration, rapid prototyping, and a final technical pitch. Achieved 5th place among inter-faculty teams for innovation, execution, and problem-solving.',
+      iconPath: 'codefuse25.png',
+      certificateUrl: 'codefuse25.png',
+      year: 2025,
+      accent: '#8b5cf6',
+      category: 'Hackathons',
+      tags: ['Teamwork', 'Rapid Prototyping', 'Problem Solving', 'Pitch'],
+      highlight: '5th Place'
+    },
+    {
       name: 'Japura Xtreme Inter University Hackathon 2.0',
       description:
         'Built and delivered a functional prototype within intense time constraints, demonstrating strong self control, rapid problem-solving, and a confident final pitch. Secured a Top 20 placement through execution quality and clarity.',
       iconPath: 'JapuraXtreme2.png',
       certificateUrl: 'JapuraXtreme2.png',
       year: 2025,
-      accent: '#12b981',
+      accent: '#3af7f7',
       category: 'Hackathons',
       tags: ['Rapid Build', 'Pitch'],
       highlight: 'Top 20'
@@ -76,16 +100,16 @@ export class ParticipationsComponent implements OnInit, OnDestroy {
       highlight: 'Inter-Uni'
     },
     {
-      name: 'SpiritX',
+      name: 'Half Baked & Bolt Founder Hackathon',
       description:
-        'Hackathon centered on solving real-world problems through web/app solutions. Emphasized problem framing, iterative design, and fast delivery of a polished demo.',
-      iconPath: 'SpiritX2024.jpeg',
-      certificateUrl: 'SpiritX2024.jpeg',
-      year: 2024,
-      accent: '#22c55e',
+        'Independently designed, built, and shipped a complete software product over a focused 10 days period. Took full ownership of ideation, development, iteration, and delivery as a solo builder.',
+      iconPath: 'HalfBaked2025.png',
+      certificateUrl: 'HalfBaked2025.png',
+      year: 2025,
+      accent: '#38ee65',
       category: 'Hackathons',
-      tags: ['Prototype', 'Problem Solving', 'Execution'],
-      highlight: 'Prototype'
+      tags: ['Solo Build', 'Product Development', 'Execution'],
+      highlight: 'Solo Project'
     },
     {
       name: 'Google Developer Group (GDG) Program',
@@ -94,11 +118,24 @@ export class ParticipationsComponent implements OnInit, OnDestroy {
       iconPath: 'gdg.PNG',
       // certificateUrl: 'gdg.jpg',
       year: 2024,
-      accent: '#6366f1',
+      accent: '#eb374f',
       category: 'Programs',
       tags: ['Workshops', 'Community', 'Learning'],
       highlight: 'Program'
+    },
+    {
+      name: 'Hacktoberfest 2025 – WSO2',
+      description:
+        'Contributed independently to open-source projects during Hacktoberfest 2025, collaborating with the WSO2 open-source ecosystem. Focused on meaningful code contributions, issue resolution, and improving project quality as a solo contributor.',
+      iconPath: 'Hacktoberfest2025.png',
+      // certificateUrl: 'hacktoberfest-2025.pdf',
+      year: 2025,
+      accent: '#f97316',
+      category: 'Open Source',
+      tags: ['Open Source', 'Solo Contribution', 'Community'],
+      highlight: 'Solo Contributor'
     }
+
   ];
 
   constructor(private sanitizer: DomSanitizer) { }
@@ -159,10 +196,11 @@ export class ParticipationsComponent implements OnInit, OnDestroy {
     return this.participatedProjects.filter(p => p.category === this.activeCategory);
   }
 
-  get currentCounts(): { hackathons: number; programs: number } {
+  get currentCounts(): { hackathons: number; programs: number; OpenSource: number } {
     return {
       hackathons: this.participatedProjects.filter(p => p.category === 'Hackathons').length,
-      programs: this.participatedProjects.filter(p => p.category === 'Programs').length
+      programs: this.participatedProjects.filter(p => p.category === 'Programs').length,
+      OpenSource: this.participatedProjects.filter(p => p.category === 'Open Source').length,
     };
   }
 
