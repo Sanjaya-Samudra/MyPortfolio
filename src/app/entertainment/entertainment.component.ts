@@ -24,6 +24,13 @@ export class EntertainmentComponent implements OnInit, OnDestroy {
 
   items: ShowcaseItem[] = [
     {
+      id: 'g_plane_shooter',
+      category: 'Games',
+      title: 'Plane Shooting Game',
+      images: ['Neon-X.png', 'Neon-X-MachineUpgrade.png', 'Neon-X-gameplay.png', 'Neon-X-Leaderboard.png'],
+      tags: ['Logic', 'States', 'UI']
+    },
+    {
       id: 'g_blackjack',
       category: 'Games',
       title: 'Blackjack Build',
@@ -35,7 +42,8 @@ export class EntertainmentComponent implements OnInit, OnDestroy {
       category: 'Videos',
       title: 'Cinematic Edit Pack',
       images: ['video-editing.png'],
-      tags: ['Cuts', 'Sound', 'Color']    },
+      tags: ['Cuts', 'Sound', 'Color']
+    },
     {
       id: 'e_blender',
       category: 'Editing',
