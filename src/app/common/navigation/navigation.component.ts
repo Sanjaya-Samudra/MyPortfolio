@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 @Component({
@@ -9,7 +9,7 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css'
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
   isDropdownOpen = false;
   isSidebarOpen = false;
 
@@ -17,6 +17,27 @@ export class NavigationComponent {
   userName = 'Sanjaya Samudra';
   userEmail = 'sanjayasamudraelpitiya@gmail.com';
   userProfession = 'Undergraduate Software Engineer';
+
+  viewCount: number = 0;
+
+  ngOnInit() {
+    // Logic for "never resets zero" view count (stored in localStorage)
+    const storedCount = localStorage.getItem('portfolio_view_count');
+    let count = 0;
+    
+    if (storedCount) {
+      const parsed = parseInt(storedCount, 10);
+      if (!isNaN(parsed)) {
+        count = parsed;
+      }
+    }
+    
+    // Increment count for this visit
+    count++;
+    
+    localStorage.setItem('portfolio_view_count', count.toString());
+    this.viewCount = count;
+  }
 
   toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
