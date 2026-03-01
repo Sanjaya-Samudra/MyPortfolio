@@ -30,25 +30,25 @@ export class AboutComponent implements OnInit, OnDestroy {
   cvUrl = '/path-to-your-cv.pdf';
 
   technologies: StackItem[] = [
-    { name: 'Angular', icon: '/angular.svg' },
-    { name: 'TypeScript', icon: '/typescript.svg' },
-    { name: 'JavaScript', icon: '/javascript.svg' },
-    { name: 'HTML', icon: '/html.svg' },
-    { name: 'CSS', icon: '/css.svg' },
-    { name: 'Node.js', icon: '/node.svg' },
-    { name: 'Python', icon: '/python.svg' },
-    { name: 'React', icon: '/react.svg' },
-    { name: 'Next.js', icon: '/nextjs.svg' },
-    { name: 'Tailwind CSS', icon: '/tailwind.svg' }
+    { name: 'Angular', icon: 'angular.svg' },
+    { name: 'TypeScript', icon: 'typescript.svg' },
+    { name: 'JavaScript', icon: 'javascript.svg' },
+    { name: 'HTML', icon: 'html.svg' },
+    { name: 'CSS', icon: 'css.svg' },
+    { name: 'Node.js', icon: 'node.svg' },
+    { name: 'Python', icon: 'python.svg' },
+    { name: 'React', icon: 'react.svg' },
+    { name: 'Next.js', icon: 'nextjs.svg' },
+    { name: 'Tailwind CSS', icon: 'tailwind.svg' }
   ];
 
   tools: StackItem[] = [
-    { name: 'GitHub', icon: '/github.svg' },
-    { name: 'VS Code', icon: '/vscode.svg' },
-    { name: 'Figma', icon: '/figma.svg' },
-    { name: 'Postman', icon: '/postman.svg' },
-    { name: 'MySQL', icon: '/mysql.svg' },
-    { name: 'Spring Boot', icon: '/spring-boot.svg' }
+    { name: 'GitHub', icon: 'github.svg' },
+    { name: 'VS Code', icon: 'vscode.svg' },
+    { name: 'Figma', icon: 'figma.svg' },
+    { name: 'Postman', icon: 'postman.svg' },
+    { name: 'MySQL', icon: 'mysql.svg' },
+    { name: 'Spring Boot', icon: 'spring-boot.svg' }
   ];
 
   // Avatar interactions

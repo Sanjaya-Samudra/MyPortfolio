@@ -60,7 +60,7 @@
               <div class="flex flex-wrap gap-2">
                 <div *ngFor="let tech of p.technologies"
                      class="tech-icon group/icon relative flex items-center justify-center w-8 h-8 rounded-full transition-all duration-300 hover:scale-125 cursor-pointer">
-                  <img [src]="'/' + getIcon(tech)" class="w-5 h-5 object-contain opacity-80 group-hover/icon:opacity-100" [alt]="tech">
+                  <img [src]="getIcon(tech)" class="w-5 h-5 object-contain opacity-80 group-hover/icon:opacity-100" [alt]="tech">
                   <div class="tooltip absolute top-full mt-1 left-1/2 -translate-x-1/2 px-2 py-0.5 text-[9px] font-bold rounded
                               opacity-0 group-hover/icon:opacity-100 transition-all duration-200 transform -translate-y-1 group-hover/icon:translate-y-0
                               pointer-events-none whitespace-nowrap z-[60]">
