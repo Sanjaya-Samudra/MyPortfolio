@@ -135,11 +135,11 @@ export class EntertainmentComponent implements OnInit, OnDestroy {
     return { transform: `translateX(-${this.activeIndex * 100}%)` };
   }
 
-  // public/ root: "x.png" -> "assets/x.png"
+  // public/ root: "x.png" -> "x.png"
   imgSrc(p: string): string {
     if (!p) return p;
     if (p.startsWith('http') || p.startsWith('data:') || p.startsWith('/')) return p;
-    return `assets/${p}`;
+    return p;
   }
 
   getPreviewIndex(item: ShowcaseItem): number {

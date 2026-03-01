@@ -15,6 +15,7 @@
           "options": {
             "outputPath": "docs",
             "baseHref": "./",
+            "deployUrl": "./",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -24,8 +25,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public",
-                "output": "assets"
+                "input": "public"
               }
             ],
             "styles": [
