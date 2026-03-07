@@ -85,9 +85,10 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 18px 0 10px;
+  padding: 18px 0 60px; /* Increased bottom padding to lift carousel above controls */
   touch-action: pan-y;
   z-index: 10;
+  transform-style: preserve-3d;
 }
 
 .carousel {
@@ -198,6 +199,16 @@
   justify-content: center;
   width: 100%;
   padding: 10px 0 18px;
+  /* Add pointer-events: none to allow clicks through the container's background/padding */
+  pointer-events: none; 
+}
+
+/* Re-enable pointer events on interactive children */
+.controls-pill,
+.jump-container,
+.nav-btn,
+.jump-glass {
+  pointer-events: auto;
 }
 
 .carousel-mov {
@@ -368,13 +379,14 @@
    RESPONSIVE
    ========================= */
 @media (max-width: 767px) {
-  .scene-container { perspective: 800px; }
+  .scene-container { perspective: 2000px; }
   .carousel { width: 170px; height: 290px; }
   .card { width: 170px; height: 290px; }
   .mirror-floor { width: 600px; height: 600px; }
 
+  /* OVERRIDE: Reset padding for mobile to keep card centered/visible, further increased top padding to push card down */
   .carousel-wrapper {
-    padding: 38px 0 10px;
+    padding: 88px 0 10px;
   }
 
   .jump-glass { min-width: 140px; padding: 0 12px; height: 50px; }
@@ -392,7 +404,7 @@
 }
 
 @media (min-width: 768px) {
-  .scene-container { perspective: 1200px; }
+  .scene-container { perspective: 3000px; }
   .carousel { width: 220px; height: 330px; }
   .card { width: 220px; height: 330px; }
   .mirror-floor { width: 900px; height: 900px; }
