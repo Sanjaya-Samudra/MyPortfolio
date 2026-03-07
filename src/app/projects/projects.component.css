@@ -162,6 +162,10 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+.hyper-button {
+  flex-shrink: 0;
+}
+
 .tooltip {
   background: rgba(15,23,42,0.95);
   color: #ffffff;
@@ -387,6 +391,16 @@
   /* OVERRIDE: Reset padding for mobile to keep card centered/visible, further increased top padding to push card down */
   .carousel-wrapper {
     padding: 88px 0 10px;
+  }
+
+  /* Compact tech icons to prevent overflow */
+  .tech-icon {
+    width: 24px !important;
+    height: 24px !important;
+  }
+  .tech-icon img {
+    width: 14px !important;
+    height: 14px !important;
   }
 
   .jump-glass { min-width: 140px; padding: 0 12px; height: 50px; }
