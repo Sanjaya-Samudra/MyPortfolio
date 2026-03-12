@@ -134,6 +134,18 @@ export class ParticipationsComponent implements OnInit, OnDestroy {
       category: 'Open Source',
       tags: ['Open Source', 'Solo Contribution', 'Community'],
       highlight: 'Solo Contributor'
+    },
+    {
+      name: 'Devthon 3.0 – University Category',
+      description:
+        'Participated in Devthon 3.0 organized by the Rotaract Club of University of Moratuwa and Leo Clubs of Sri Lanka & Maldives. Our team (JthonX) advanced to the Semi Final Round in the University Category, showcasing innovative development skills and collaborative problem solving.',
+      iconPath: 'devthon3.0.jpeg',
+      certificateUrl: 'devthon3.0.jpeg',
+      year: 2025,
+      accent: '#06b6d4',
+      category: 'Hackathons',
+      tags: ['Hackathon', 'University Competition', 'Designthon'],
+      highlight: 'Semi Finalist'
     }
 
   ];
