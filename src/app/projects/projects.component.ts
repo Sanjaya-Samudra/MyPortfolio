@@ -124,6 +124,14 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       description: 'My JavaFX clothing store.',
       link: 'https://github.com/Sanjaya-Samudra/JavaFX-Clothify-Store',
       technologies: ['JavaFX', 'CSS']
+    },
+    {
+      name: 'AnatoAI',
+      image: 'anatoai.png',
+      year: 2025,
+      description: 'An AI-powered anatomy healthcare assistant that helps users explore and understand human body structures. The system provides intelligent insights and interactive visualization to support anatomy learning and healthcare-related exploration.',
+      link: 'https://github.com/Sanjaya-Samudra/AnatoAI',
+      technologies: ['React', 'TypeScript', 'Tailwind', 'Blender']
     }
   ];
 
@@ -288,7 +296,8 @@ export class ProjectsComponent implements OnInit, OnDestroy, AfterViewInit {
       'React': 'react.svg',
       'Next.js': 'nextjs.svg',
       'Tailwind': 'tailwind.svg',
-      'TypeScript': 'typescript.svg'
+      'TypeScript': 'typescript.svg',
+      'Blender': 'blender.svg'
     };
     return iconMap[tech] || 'java.svg';
   }
