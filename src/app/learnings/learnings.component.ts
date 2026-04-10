@@ -17,6 +17,14 @@ export class LearningsComponent {
   learnings = [
     {
       id: 1,
+      title: 'API Beginner Learning Path',
+      subtitle: 'Postman Academy',
+      date: 'Apr 2026',
+      description: 'Completed a certification focused on API fundamentals, including understanding REST APIs, making requests, working with endpoints, and using Postman for testing and development workflows.',
+      imageUrl: 'postman.jpeg',
+    },
+    {
+      id: 2,
       title: 'AI Agents for Beginners',
       subtitle: 'Simplilearn SkillUp',
       date: 'Oct 2025',
@@ -24,7 +32,7 @@ export class LearningsComponent {
       imageUrl: 'ai-agents-simplilearn.PNG',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Canva for Beginners',
       subtitle: 'Simplilearn SkillUp',
       date: 'Oct 2025',
@@ -32,7 +40,7 @@ export class LearningsComponent {
       imageUrl: 'canva-simplilearn.PNG',
     },
     {
-      id: 3,
+      id: 4,
       title: 'Introduction to PHP',
       subtitle: 'Alison',
       date: 'Aug 2025',
@@ -40,31 +48,15 @@ export class LearningsComponent {
       imageUrl: 'php-alison.png',
     },
     {
-      id: 4,
-      title: 'Java (Basic) Certification',
-      subtitle: 'HackerRank',
-      date: 'May 2025',
-      description: 'Earned a certification validating fundamental Java programming skills. Demonstrates understanding of basic syntax, data types, control flow, object-oriented concepts, and problem-solving through the HackerRank skill certification assessment.',
-      imageUrl: 'java-hackerrank.png',
-    },
-    {
       id: 5,
-      title: 'SQL (Basic) Certification',
-      subtitle: 'HackerRank',
-      date: 'Apr 2025',
-      description: 'Earned a certification validating fundamental SQL skills, including querying databases using SELECT statements, filtering with WHERE clauses, sorting results, and performing basic aggregations. Demonstrates ability to work with relational databases and structured data.',
-      imageUrl: 'sql-hackerrank.png',
+      title: 'Build a Complete Website',
+      subtitle: 'Full Stack WordPress',
+      date: 'Oct 2024',
+      description: 'Create a fully functional website, from setup to launch, including customization, design, and adding essential features.',
+      imageUrl: 'wordpress2.png',
     },
     {
       id: 6,
-      title: 'Python Certification',
-      subtitle: 'University of Moratuwa',
-      date: 'Dec 2024',
-      description: 'Earned a certification demonstrating solid understanding and hands-on experience with Python data structures and algorithms. Covered lists, dictionaries, sets, tuples, and complexity analysis.',
-      imageUrl: 'python-uom.PNG',
-    },
-    {
-      id: 7,
       title: 'Basics of WordPress',
       subtitle: 'CMS Fundamentals',
       date: 'Nov 2024',
@@ -72,12 +64,28 @@ export class LearningsComponent {
       imageUrl: 'wordpress1.png',
     },
     {
+      id: 7,
+      title: 'Java (Basic) Certification',
+      subtitle: 'HackerRank',
+      date: 'May 2025',
+      description: 'Earned a certification validating fundamental Java programming skills. Demonstrates understanding of basic syntax, data types, control flow, object-oriented concepts, and problem-solving through the HackerRank skill certification assessment.',
+      imageUrl: 'java-hackerrank.png',
+    },
+    {
       id: 8,
-      title: 'Build a Complete Website',
-      subtitle: 'Full Stack WordPress',
-      date: 'Oct 2024',
-      description: 'Create a fully functional website, from setup to launch, including customization, design, and adding essential features.',
-      imageUrl: 'wordpress2.png',
+      title: 'SQL (Basic) Certification',
+      subtitle: 'HackerRank',
+      date: 'Apr 2025',
+      description: 'Earned a certification validating fundamental SQL skills, including querying databases using SELECT statements, filtering with WHERE clauses, sorting results, and performing basic aggregations. Demonstrates ability to work with relational databases and structured data.',
+      imageUrl: 'sql-hackerrank.png',
+    },
+    {
+      id: 9,
+      title: 'Python Certification',
+      subtitle: 'University of Moratuwa',
+      date: 'Sep 2023',
+      description: 'Earned a certification demonstrating solid understanding and hands-on experience with Python data structures and algorithms. Covered lists, dictionaries, sets, tuples, and complexity analysis.',
+      imageUrl: 'python-uom.PNG',
     }
   ];
 
